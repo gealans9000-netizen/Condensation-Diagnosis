@@ -1,4 +1,4 @@
-# 창호 결로 진단기
+# 게알란코리아 창호 결로 진단 프로그램
 
 실내외 온도·습도와 창호 성능으로 창의 결로·곰팡이·결빙 가능성을 진단하는 웹 계산기입니다.
 testo 605i(testo Smart 앱) 측정 데이터(CSV)를 불러와 분석할 수 있습니다.
@@ -7,7 +7,8 @@ testo 605i(testo Smart 앱) 측정 데이터(CSV)를 불러와 분석할 수 있
 
 ## 파일
 - `index.html` — 프로그램 전체 (HTML·CSS·JS 한 파일)
-- `favicon.svg`, `icon-192.png`, `icon-512.png`, `manifest.webmanifest` — 아이콘, 휴대폰 홈 화면 추가용
+- `favicon.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `manifest.webmanifest` — 게알란코리아 로고 아이콘, 휴대폰 홈 화면 추가용
+- `lib/html2canvas.min.js`, `lib/jspdf.umd.min.js` — 진단결과서를 PDF·그림 파일로 만드는 도구 (MIT 라이선스)
 - `vercel.json` — Vercel 설정
 
 ## 계산 근거

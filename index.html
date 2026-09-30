@@ -4,24 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="description" content="실내외 온도와 습도, 창호 성능으로 창의 결로·곰팡이·결빙 가능성을 진단합니다. testo 605i 측정 데이터(CSV)도 불러와 분석합니다.">
-<meta name="theme-color" content="#2f6f8f">
-<meta property="og:title" content="창호 결로 진단기">
-<meta property="og:description" content="창의 부위별 표면온도로 결로·곰팡이·결빙 가능성을 진단하는 계산기">
+<meta name="description" content="게알란코리아 창호 결로 진단 프로그램. 실내외 온도·습도와 창호 성능으로 창의 결로·곰팡이·결빙 가능성을 진단하고 testo 605i 측정 데이터(CSV)를 분석합니다.">
+<meta name="theme-color" content="#0a3a8f">
+<meta property="og:title" content="게알란코리아 창호 결로 진단 프로그램">
+<meta property="og:description" content="창의 부위별 표면온도로 결로·곰팡이·결빙 가능성을 진단합니다.">
 <meta property="og:type" content="website">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/icon-192.png">
+<meta property="og:image" content="/icon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="결로 진단">
-<title>창호 결로 진단기</title>
+<title>게알란코리아 창호 결로 진단 프로그램</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 /* Layout: 좌측 입력 패널(고정 폭) + 우측 결과 열 — 판정 타일 → 공기 상태 → 한계값 → 부위별 표 → 외기온도×습도 위험 지도 → 조치 → 계산 근거. 모바일은 한 열 */
 :root{
   --bg:#eef2f4; --panel:#ffffff; --fg:#17232b; --muted:#5c6b75; --line:#d4dde2; --sunk:#f5f8f9;
-  --glass:#2f6f8f; --dew:#6b4fbf; --mold:#7a6a1f;
+  --glass:#0a3a8f; --dew:#6b4fbf; --mold:#7a6a1f;
   --ok:#2e7d4f; --warn:#b7791f; --bad:#c2410c; --crit:#b42318;
   --zone-ok:#e3f1e8; --zone-mold:#f6ecd0; --zone-cond:#f7dcd6;
   --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
@@ -29,19 +30,21 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0f1519; --panel:#172027; --fg:#e3eaee; --muted:#93a3ad; --line:#2a3740; --sunk:#121a1f;
-  --glass:#6fb3d4; --dew:#a996f0; --mold:#d2bc5a;
+  --glass:#8fb0f2; --dew:#a996f0; --mold:#d2bc5a;
   --ok:#5cc28a; --warn:#e0a948; --bad:#f07a44; --crit:#f26b5e;
   --zone-ok:#15291e; --zone-mold:#2d2814; --zone-cond:#35191a; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f1519; --panel:#172027; --fg:#e3eaee; --muted:#93a3ad; --line:#2a3740; --sunk:#121a1f;
-  --glass:#6fb3d4; --dew:#a996f0; --mold:#d2bc5a;
+  --glass:#8fb0f2; --dew:#a996f0; --mold:#d2bc5a;
   --ok:#5cc28a; --warn:#e0a948; --bad:#f07a44; --crit:#f26b5e;
   --zone-ok:#15291e; --zone-mold:#2d2814; --zone-cond:#35191a; color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55;word-break:keep-all;overflow-wrap:anywhere}
 .wrap{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:28px 48px}
-header{display:flex;flex-direction:column;gap:4px;margin-bottom:22px}
+header{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .logo{width:56px;height:56px;flex:none}
 h1{font-size:1.65rem;font-weight:700;margin:0;letter-spacing:-.01em;text-wrap:balance}
 header p{margin:0;color:var(--muted);max-width:66ch}
 .grid{display:grid;grid-template-columns:minmax(0,350px) minmax(0,1fr);gap:20px;align-items:start}
@@ -179,6 +182,91 @@ details.paste[open] summary{margin-bottom:8px}
 .apply-row{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .apply-row .btn{flex:1 1 150px}
 
+/* ── 진단결과서 입력 ── */
+.rform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:560px){.rform{grid-template-columns:minmax(0,1fr)}}
+.rform .full{grid-column:1/-1}
+.rform label{font-size:.82rem;font-weight:600}
+.rform input[type=text],.rform input[type=tel],.rform textarea{font:400 .95rem var(--f-body);color:var(--fg);background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%;min-height:44px}
+.rform textarea{min-height:84px;resize:vertical}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px}
+.thumbs figure{margin:0;position:relative;width:88px;height:88px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs button{position:absolute;top:3px;right:3px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:15px;line-height:1;cursor:pointer}
+.report-cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.report-cta .btn{flex:1 1 220px}
+/* ── 결과서 미리보기 창 ── */
+.rmodal{position:fixed;inset:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,#000);display:flex;flex-direction:column}
+.rbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));background:var(--panel);border-bottom:1px solid var(--line)}
+.rbar b{font-size:1rem}
+@media (max-width:560px){.rbar b{display:none}.rbtns .btn{flex:1 1 auto;min-height:38px;padding:6px 8px;font-size:.8rem}.rbtns{width:100%}}
+.rbtns{display:flex;flex-wrap:wrap;gap:6px}
+.rbtns .btn{min-height:40px;padding:8px 12px;font-size:.85rem}
+.rbtns .btn.share{background:#fee500;border-color:#fee500;color:#191600}
+.rbtns .btn:disabled{opacity:.55;cursor:progress}
+.rmsg{margin:0;padding:8px 16px;font-size:.84rem;background:var(--sunk);border-bottom:1px solid var(--line)}
+.rstage{flex:1;overflow:auto;padding:16px;-webkit-overflow-scrolling:touch}
+.rscale{width:794px;transform-origin:0 0;margin:0 auto}
+@media (max-width:860px){.rscale{margin:0}}
+/* 결과서 본문: 화면 테마와 무관하게 항상 흰 종이 */
+.rpt{--bg:#eef2f4;--panel:#ffffff;--fg:#17232b;--muted:#5c6b75;--line:#d4dde2;--sunk:#f5f8f9;--glass:#0a3a8f;--dew:#6b4fbf;--mold:#7a6a1f;--ok:#2e7d4f;--warn:#b7791f;--bad:#c2410c;--crit:#b42318;--zone-ok:#e3f1e8;--zone-mold:#f6ecd0;--zone-cond:#f7dcd6;
+  color-scheme:light;width:794px;background:#fff;color:var(--fg);font-family:var(--f-body);font-size:12.5px;line-height:1.5;padding:40px 44px;box-shadow:0 2px 18px rgba(0,0,0,.18);position:relative;word-break:keep-all}
+.rpt .rhead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding-bottom:14px;border-bottom:3px solid var(--glass)}
+.rpt .rbrand{display:flex;align-items:center;gap:12px}
+.rpt .rbrand img{width:52px;height:52px}
+.rpt .rbrand small{display:block;font-size:11px;color:var(--muted);letter-spacing:.06em}
+.rpt .rbrand h1{font-size:22px;margin:0;letter-spacing:-.01em}
+.rpt .rmeta{text-align:right;font-size:11px;color:var(--muted);font-family:var(--f-mono);line-height:1.6}
+.rpt .rsec{margin-top:18px;break-inside:avoid;page-break-inside:avoid}
+.rpt h2{font-size:13px;margin:0 0 8px;color:var(--glass);display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0}
+.rpt h2::before{content:"";width:4px;height:14px;background:var(--glass);border-radius:1px}
+.rpt table{width:100%;min-width:0;border-collapse:collapse;font-size:11.5px}
+.rpt th,.rpt td{border:1px solid var(--line);padding:6px 8px;text-align:left;white-space:normal}
+.rpt th{background:var(--sunk);color:var(--fg);font-weight:600;font-size:11px;letter-spacing:0;width:auto}
+.rpt .kv th{width:17%}
+.rpt .kv td{width:33%}
+.rpt .parts th,.rpt .parts td{text-align:right}
+.rpt .parts th:first-child,.rpt .parts td:first-child{text-align:left}
+.rpt .m{font-family:var(--f-mono)}
+.rpt .verdict-box{border:1.5px solid var(--c);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.rpt .verdict-box b{font-size:15px}
+.rpt .verdict-box p{margin:0;color:var(--muted)}
+.rpt .rtiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.rpt .rtile{border:1px solid var(--line);border-top:4px solid var(--c);border-radius:4px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center}
+.rpt .rtile span{font-weight:600}
+.rpt .rtile b{font:600 20px var(--f-mono);color:var(--c)}
+.rpt .rtile em{font-style:normal;font-size:10.5px;color:#fff;background:var(--c);border-radius:99px;padding:1px 7px;margin-left:6px}
+.rpt .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.rpt .rgrid div{padding:7px 10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rpt .rgrid div:nth-child(3n){border-right:0}
+.rpt .rgrid span{display:block;font-size:10.5px;color:var(--muted)}
+.rpt .rgrid b{font:500 14px var(--f-mono)}
+.rpt .rgrid.g4{grid-template-columns:repeat(4,1fr)}
+.rpt .rgrid.g4 div:nth-child(3n){border-right:1px solid var(--line)}
+.rpt .rgrid.g4 div:nth-child(4n){border-right:0}
+.rpt .rfig svg{width:100%;height:auto;display:block}
+.rpt .rlg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:10.5px;color:var(--muted);margin-top:4px}
+.rpt .rlg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px;border:1px solid var(--line)}
+.rpt ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:3px}
+.rpt .rnote{border:1px solid var(--line);border-radius:4px;padding:10px 12px;white-space:pre-wrap;min-height:40px}
+.rpt .rphotos{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.rpt .rphotos img{width:100%;height:220px;object-fit:cover;border-radius:4px;border:1px solid var(--line)}
+.rpt .rfoot{margin-top:22px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;font-size:10.5px;color:var(--muted);break-inside:avoid}
+.rpt .rfoot p{margin:0 0 3px;max-width:62ch}
+.rpt .rsign{min-width:180px;text-align:right;color:var(--fg);font-size:11.5px;line-height:2}
+.rpt .rsign span{display:inline-block;width:90px;border-bottom:1px solid var(--fg);margin-left:6px}
+@page{size:A4;margin:10mm}
+@media print{
+  body>:not(#rpt-modal){display:none!important}
+  html,body{background:#fff!important}
+  :root{padding:0!important}
+  .rmodal{position:static;display:block;background:#fff}
+  .rbar,.rmsg{display:none!important}
+  .rstage{overflow:visible;padding:0}
+  .rscale{transform:none!important;height:auto!important;width:auto!important;margin:0!important}
+  .rpt{width:auto;box-shadow:none;padding:0}
+}
+
 /* ── 모바일 보기 ── */
 .snav,.lead-short,.pcards,.tile-notes{display:none}
 section[id]{scroll-margin-top:64px}
@@ -207,7 +295,9 @@ section[id]{scroll-margin-top:64px}
 @media (max-width:560px){
   body{font-size:15px}
   .wrap{padding-block:16px 110px}
-  h1{font-size:1.4rem}
+  h1{font-size:1.25rem}
+  .brand{gap:10px}
+  .brand .logo{width:44px;height:44px}
   header{margin-bottom:12px}
   .lead-long{display:none}
   .lead-short{display:block}
@@ -244,12 +334,15 @@ section[id]{scroll-margin-top:64px}
 
 <div class="wrap">
   <header>
-    <h1>창호 결로 진단기</h1>
+    <div class="brand">
+      <img class="logo" src="data:image/png;base64,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" alt="게알란코리아 로고" width="56" height="56">
+      <h1>게알란코리아 창호 결로 진단 프로그램</h1>
+    </div>
     <p class="lead-short">온도와 습도를 조절하면 창의 결로 · 곰팡이 · 결빙 가능성이 바로 계산됩니다.</p>
     <p class="lead-long">실내외 온도, 실내 습도, 창호 성능과 실내 표면 조건으로 창의 부위별 표면온도를 구합니다. 표면 결로, 곰팡이, 결빙 가능성을 판정하고 결로가 시작되는 한계 습도와 외기온도도 알려줍니다. DIN EN ISO 13788과 국내 결로방지 설계기준 방식을 따릅니다.</p>
   </header>
   <nav class="snav" aria-label="바로가기">
-    <a href="#sec-input">입력</a><a href="#sec-data" id="nav-data" hidden>측정</a><a href="#sec-result">결과</a><a href="#sec-parts">부위별</a><a href="#sec-map">위험 지도</a><a href="#sec-tips">조치</a>
+    <a href="#sec-input">입력</a><a href="#sec-data" id="nav-data" hidden>측정</a><a href="#sec-result">결과</a><a href="#sec-parts">부위별</a><a href="#sec-map">위험 지도</a><a href="#sec-tips">조치</a><a href="#sec-report">결과서</a>
   </nav>
 
   <div class="grid">
@@ -429,6 +522,7 @@ section[id]{scroll-margin-top:64px}
           </div>
         </div>
         <ul class="tile-notes" id="tile-notes"></ul>
+        <div class="report-cta"><button type="button" class="btn" id="r-open2">진단결과서 만들기 · 인쇄 · 카톡 공유</button></div>
       </section>
 
       <section class="panel">
@@ -484,6 +578,27 @@ section[id]{scroll-margin-top:64px}
         <ul id="tips"></ul>
       </section>
 
+      <section class="panel" id="sec-report">
+        <h2>진단결과서</h2>
+        <p class="hint" style="margin-bottom:12px">고객 정보를 넣고 결과서를 만들면 인쇄하거나 PDF · 그림 파일로 저장해 카카오톡으로 보낼 수 있습니다. 비워 둔 칸은 결과서에서 빠집니다.</p>
+        <div class="rform">
+          <div class="field"><label for="r-cust">고객명</label><input type="text" id="r-cust" placeholder="예: 홍길동 님" autocomplete="off"></div>
+          <div class="field"><label for="r-loc">측정 위치</label><input type="text" id="r-loc" placeholder="예: 거실 남측 창" autocomplete="off"></div>
+          <div class="field full"><label for="r-addr">현장 주소</label><input type="text" id="r-addr" placeholder="예: 서울시 ○○구 ○○아파트 101동 1203호" autocomplete="off"></div>
+          <div class="field"><label for="r-by">진단자</label><input type="text" id="r-by" placeholder="예: 김○○ 과장" autocomplete="off"></div>
+          <div class="field"><label for="r-tel">회사 연락처</label><input type="tel" id="r-tel" placeholder="예: 02-000-0000" autocomplete="off"></div>
+          <div class="field full"><label for="r-note">진단 의견</label><textarea id="r-note" placeholder="현장에서 확인한 내용이나 고객에게 전할 말을 적으세요."></textarea></div>
+          <div class="field full"><span class="lbl" style="font-size:.82rem">현장 사진 <small>최대 4장</small></span>
+            <div class="thumbs" id="r-thumbs"></div>
+            <label class="btn" for="r-photo" style="display:flex;align-items:center;justify-content:center;max-width:220px">사진 추가</label>
+            <input type="file" id="r-photo" accept="image/*" multiple hidden>
+          </div>
+        </div>
+        <div class="report-cta">
+          <button type="button" class="btn primary" id="r-open">진단결과서 만들기</button>
+        </div>
+      </section>
+
       <section class="panel">
         <details class="method">
           <summary>계산 방법과 근거</summary>
@@ -516,6 +631,22 @@ section[id]{scroll-margin-top:64px}
       </section>
     </div>
   </div>
+</div>
+
+<div class="rmodal" id="rpt-modal" hidden role="dialog" aria-modal="true" aria-label="진단결과서 미리보기">
+  <div class="rbar">
+    <b>진단결과서 미리보기</b>
+    <div class="rbtns">
+      <button type="button" class="btn share" id="x-share-pdf" disabled>카톡 · 공유 (PDF)</button>
+      <button type="button" class="btn share" id="x-share-img" disabled>카톡 · 공유 (그림)</button>
+      <button type="button" class="btn" id="x-pdf" disabled>PDF 저장</button>
+      <button type="button" class="btn" id="x-img" disabled>그림 저장</button>
+      <button type="button" class="btn" id="x-print">인쇄</button>
+      <button type="button" class="btn" id="x-close">닫기</button>
+    </div>
+  </div>
+  <p class="rmsg" id="rmsg" hidden></p>
+  <div class="rstage" id="rstage"><div class="rscale" id="rscale"><div class="rpt" id="rpt"></div></div></div>
 </div>
 
 <div class="mbar" id="mbar" aria-live="polite" role="button" tabindex="0" aria-label="진단 결과로 이동">
@@ -733,10 +864,10 @@ section[id]{scroll-margin-top:64px}
   }
 
   // ── 위험 지도: x = 외기온도, y = 실내 상대습도 ──
-  let lastMap=null;
+  let lastMap=null, FORCE_W=0;
   function drawMap(Ti,To,RH,r,moldRH){
     lastMap=[Ti,To,RH,r,moldRH];
-    const cw=Math.round($("map").getBoundingClientRect().width)||640;
+    const cw=FORCE_W||Math.round($("map").getBoundingClientRect().width)||640;
     const narrow=cw<520, W=Math.max(280,Math.min(cw,900)), H=narrow?Math.round(W*0.92):360;
     const L=narrow?40:48, R=narrow?10:16, T=narrow?20:14, B=40, xmin=-25, xmax=Math.max(15,Math.ceil((Ti-1)/5)*5), ymin=20, ymax=95;
     const X=v=>L+(v-xmin)/(xmax-xmin)*(W-L-R), Y=v=>T+(ymax-v)/(ymax-ymin)*(H-T-B);
@@ -1009,7 +1140,7 @@ section[id]{scroll-margin-top:64px}
     $("d-note").textContent=(n>lim?`처음 ${lim}개만 표시합니다. `:"")+"결로·곰팡이 가능성은 측정한 실내 공기 조건에 현재 선택한 창호 종류와 창 앞 조건을 적용한 값입니다."+(withS.length?" 표면온도 칸이 빨간색이면 실측 표면온도가 이슬점 이하입니다.":"");
   }
   function lineChart(id,series,unit,Hd,fixed){
-    const svg=$(id), cw=Math.round(svg.getBoundingClientRect().width)||640, narrow=cw<520;
+    const svg=$(id), cw=FORCE_W||Math.round(svg.getBoundingClientRect().width)||640, narrow=cw<520;
     const W=Math.max(280,Math.min(cw,900)), H=narrow?Math.round(Hd*0.95):Hd, L=38, R=10, T=20, B=26;
     const stride=Math.max(1,Math.ceil(ROWS.length/(W/2)));
     const pts=ROWS.filter((r,i)=>i%stride===0||i===ROWS.length-1);
@@ -1050,6 +1181,168 @@ section[id]{scroll-margin-top:64px}
     applyRow(m);
   }));
   if(window.ResizeObserver){ let pw=0; new ResizeObserver(en=>{ const w=Math.round(en[0].contentRect.width); if(w&&w!==pw){ pw=w; if(DATA) analyze(); } }).observe($("d-temp")); }
+
+  // ══════════ 진단결과서 ══════════
+  const LIGHT={bg:"#eef2f4",panel:"#ffffff",fg:"#17232b",muted:"#5c6b75",line:"#d4dde2",sunk:"#f5f8f9",glass:"#0a3a8f",dew:"#6b4fbf",mold:"#7a6a1f",ok:"#2e7d4f",warn:"#b7791f",bad:"#c2410c",crit:"#b42318","zone-ok":"#e3f1e8","zone-mold":"#f6ecd0","zone-cond":"#f7dcd6"};
+  const resolveVars=h=>h.replace(/var\(--([a-z-]+)\)/g,(m,k)=>LIGHT[k]||"#17232b");
+  const svgFor=id=>{ const sv=$(id); if(!sv||!sv.innerHTML) return ""; return resolveVars(sv.outerHTML.replace(/<svg /,'<svg xmlns="http://www.w3.org/2000/svg" ').replace(/ id="[^"]*"/,"").replace(/style="[^"]*"/,"")).replace(/<svg /,'<svg style="width:100%;height:auto;display:block" '); };
+  const PHOTOS=[];
+  const RKEY="gk-report-v1";
+  try{ const sv=JSON.parse(localStorage.getItem(RKEY)||"{}"); if(sv.by) $("r-by").value=sv.by; if(sv.tel) $("r-tel").value=sv.tel; }catch(e){}
+  ["r-by","r-tel"].forEach(id=>$(id).addEventListener("change",()=>{ try{ localStorage.setItem(RKEY,JSON.stringify({by:$("r-by").value,tel:$("r-tel").value})); }catch(e){} }));
+  function renderThumbs(){ $("r-thumbs").innerHTML=PHOTOS.map((u,i)=>`<figure><img src="${u}" alt="현장 사진 ${i+1}"><button type="button" data-rm="${i}" aria-label="사진 ${i+1} 빼기">×</button></figure>`).join(""); }
+  $("r-thumbs").addEventListener("click",e=>{ const b=e.target.closest("[data-rm]"); if(b){ PHOTOS.splice(+b.dataset.rm,1); renderThumbs(); } });
+  $("r-photo").addEventListener("change",async e=>{
+    for(const f of [...e.target.files]){ if(PHOTOS.length>=4) break;
+      try{ const url=URL.createObjectURL(f); const img=await new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=url; });
+        const k=Math.min(1,1200/Math.max(img.width,img.height)); const c=document.createElement("canvas"); c.width=Math.round(img.width*k); c.height=Math.round(img.height*k);
+        c.getContext("2d").drawImage(img,0,0,c.width,c.height); PHOTOS.push(c.toDataURL("image/jpeg",0.85)); URL.revokeObjectURL(url); }catch(err){} }
+    e.target.value=""; renderThumbs();
+  });
+
+  const pad2=n=>String(n).padStart(2,"0");
+  function buildReport(){
+    // 결과서용으로 지도·차트를 A4 폭에 맞춰 다시 그린 뒤, 끝나면 화면 크기로 되돌림
+    FORCE_W=706; if(lastMap) drawMap(...lastMap); if(DATA) analyze();
+    try{ return buildReportInner(); } finally { FORCE_W=0; if(lastMap) drawMap(...lastMap); if(DATA) analyze(); }
+  }
+  function buildReportInner(){
+    const now=new Date(), ymd=`${now.getFullYear()}${pad2(now.getMonth()+1)}${pad2(now.getDate())}`;
+    const docNo=`GK-${ymd}-${pad2(now.getHours())}${pad2(now.getMinutes())}`;
+    const dateTxt=`${now.getFullYear()}년 ${now.getMonth()+1}월 ${now.getDate()}일 ${pad2(now.getHours())}:${pad2(now.getMinutes())}`;
+    const v=id=>$(id).value.trim();
+    const cust=v("r-cust"), addr=v("r-addr"), loc=v("r-loc"), by=v("r-by"), tel=v("r-tel"), note=v("r-note");
+    const logo=document.querySelector(".brand .logo")?.src||"";
+    const txt=id=>$(id).textContent.trim();
+    const tile=(id,name)=>{ const P=parseInt($(id).querySelector(".big").textContent)||0, L=level(P); return `<div class="rtile" style="--c:${L.c}"><span>${name}<em>${L.t}</em></span><b>${P}%</b></div>`; };
+    const worstP=Math.max(...["t-cond","t-mold"].map(id=>parseInt($(id).querySelector(".big").textContent)||0)), WL=level(worstP);
+    const kv=rows=>`<table class="kv"><tbody>${rows.filter(r=>r).map(r=>`<tr>${r.map((c,i)=>i%2?`<td>${c}</td>`:`<th>${c}</th>`).join("")}</tr>`).join("")}</tbody></table>`;
+    let h=`<div class="rhead"><div class="rbrand">${logo?`<img src="${logo}" alt="">`:""}<div><small>GEALAN KOREA · 게알란코리아</small><h1>창호 결로 진단 결과서</h1></div></div>
+      <div class="rmeta">문서번호 ${docNo}<br>진단일시 ${dateTxt}</div></div>`;
+    const info=[]; 
+    if(cust||loc) info.push(["고객명",esc(cust||"—"),"측정 위치",esc(loc||"—")]);
+    if(addr) info.push(["현장 주소",`<span>${esc(addr)}</span>`,"",""]);
+    if(by||tel) info.push(["진단자",esc(by||"—"),"연락처",esc(tel||"—")]);
+    if(info.length){ h+=`<div class="rsec"><h2>고객 · 현장 정보</h2>${kv(info).replace(/<th><\/th><td><\/td>/g,"").replace(/<th>현장 주소<\/th><td>/,'<th>현장 주소</th><td colspan="3">')}</div>`; }
+    const selTxt=id=>$(id).selectedOptions[0]?.textContent.trim()||"";
+    h+=`<div class="rsec"><h2>측정 조건</h2>${kv([
+      ["외부 온도",`<span class="m">${f1(+$("to").value)} ℃</span>`,"내부 온도",`<span class="m">${f1(+$("ti").value)} ℃</span>`],
+      ["내부 상대습도",`<span class="m">${Math.round(+$("rh").value)} %</span>`,"실내 이슬점",`<span class="m">${esc(txt("s-td"))}</span>`],
+      ["창호 종류",esc(selTxt("win")),"창 앞 실내 조건",esc(selTxt("rsi"))]
+    ])}</div>`;
+    h+=`<div class="rsec"><h2>종합 판정</h2><div class="verdict-box" style="--c:${WL.c}"><b>${esc(txt("headline"))}</b><p>${esc(txt("detail"))}</p></div>
+      <div class="rtiles">${tile("t-cond","표면 결로")}${tile("t-mold","곰팡이")}${tile("t-frost","결빙 · 성에")}</div></div>`;
+    const head=$("rows").closest("table").querySelector("thead").innerHTML;
+    h+=`<div class="rsec"><h2>부위별 진단</h2><table class="parts"><thead>${head}</thead><tbody>${$("rows").innerHTML}</tbody></table></div>`;
+    h+=`<div class="rsec"><h2>한계값 · 가장 취약한 부위 기준</h2><div class="rgrid">
+      <div><span>결로 시작 실내습도</span><b>${esc(txt("l-rhc"))}</b></div><div><span>곰팡이 시작 실내습도</span><b>${esc(txt("l-rhm"))}</b></div><div><span>곰팡이 한계 표면온도</span><b>${esc(txt("s-tm"))}</b></div>
+      <div><span>결로 시작 외기온도</span><b>${esc(txt("l-toc"))}</b></div><div><span>곰팡이 시작 외기온도</span><b>${esc(txt("l-tom"))}</b></div><div><span>결로 방지에 필요한 TDR</span><b>${esc(txt("l-rc"))}</b></div></div></div>`;
+    h+=`<div class="rsec rfig"><h2>위험 지도 · 외기온도 × 실내습도</h2>${svgFor("map")}
+      <div class="rlg"><span><i style="background:${LIGHT["zone-ok"]}"></i>안전</span><span><i style="background:${LIGHT["zone-mold"]}"></i>곰팡이 위험</span><span><i style="background:${LIGHT["zone-cond"]}"></i>결로</span><span><i style="background:${LIGHT.fg};border-radius:50%"></i>진단 조건</span></div></div>`;
+    if(DATA && !$("sec-data").hidden){
+      const cells=[...$("d-sum").querySelectorAll(".stat")].map(st=>`<div><span>${esc(st.querySelector("span").textContent)}</span><b>${esc(st.querySelector("b").textContent)}</b></div>`).join("");
+      h+=`<div class="rsec"><h2>측정 데이터 분석 (testo 605i)</h2><p style="margin:0 0 6px;color:${LIGHT.muted}">${esc(txt("d-src").replace(/^·\s*/,""))}</p><div class="rgrid g4">${cells}</div></div>`;
+      h+=`<div class="rsec rfig"><h2>시간별 온도 · 이슬점</h2>${svgFor("d-temp")}<div class="rlg">${resolveVars($("d-temp-lg").innerHTML)}</div></div>`;
+      h+=`<div class="rsec rfig"><h2>시간별 실내 습도 · 한계 습도</h2>${svgFor("d-rh")}<div class="rlg"><span><i style="background:${LIGHT.glass}"></i>실내 습도</span><span><i style="background:${LIGHT.crit}"></i>결로 한계 습도</span><span><i style="background:${LIGHT.mold}"></i>곰팡이 한계 습도</span></div></div>`;
+    }
+    h+=`<div class="rsec"><h2>권장 조치</h2><ul>${$("tips").innerHTML}</ul></div>`;
+    if(note) h+=`<div class="rsec"><h2>진단 의견</h2><div class="rnote">${esc(note)}</div></div>`;
+    if(PHOTOS.length) h+=`<div class="rsec"><h2>현장 사진</h2><div class="rphotos">${PHOTOS.map(u=>`<img src="${u}" alt="">`).join("")}</div></div>`;
+    h+=`<div class="rfoot"><div><p><b style="color:${LIGHT.fg}">계산 근거</b> DIN 4108-3 · EN ISO 13788 포화수증기압·이슬점, fRsi = 1 − Rsi·U, 곰팡이 판정 표면습도 ${Math.round((num("moldrh",70,95)??80))}%, 「공동주택 결로 방지를 위한 설계기준」 온도차이비율 참고.</p>
+      <p>본 결과서는 입력한 조건의 정상 상태 계산에 따른 추정치입니다. 실제 결로는 환기, 일시적 수증기 발생, 시공 상태에 따라 달라질 수 있습니다.</p>
+      <p style="color:${LIGHT.fg};font-weight:600;margin-top:6px">게알란코리아${tel?` · ${esc(tel)}`:""}</p></div>
+      <div class="rsign">진단자 ${by?esc(by):""}<span></span><br>확인 (고객)<span></span></div></div>`;
+    $("rpt").innerHTML=h;
+    const safe=t=>t.replace(/[\\/:*?"<>|\s]+/g,"_").replace(/^_+|_+$/g,"");
+    return {fname:`결로진단결과서_${safe(cust)||"고객"}_${ymd}`, title:`창호 결로 진단 결과서${cust?" - "+cust:""}`};
+  }
+
+  // 라이브러리: 배포 폴더의 lib/ → 없으면 cdnjs
+  const LIBS={h2c:["lib/html2canvas.min.js","https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"],
+              pdf:["lib/jspdf.umd.min.js","https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"]};
+  const loadScript=src=>new Promise((res,rej)=>{ const sc=document.createElement("script"); sc.src=src; sc.onload=res; sc.onerror=()=>{ sc.remove(); rej(); }; document.head.appendChild(sc); });
+  async function need(k,test){ if(test()) return; for(const u of LIBS[k]){ try{ await loadScript(u); if(test()) return; }catch(e){} } throw new Error("lib"); }
+
+  let OUT=null, META=null, building=0;
+  const inFrame=(()=>{ try{ return window.self!==window.top; }catch(e){ return true; } })();
+  function rmsg(t){ const m=$("rmsg"); m.hidden=!t; m.innerHTML=t||""; }
+  function fitReport(){ const st=$("rstage"), sc=$("rscale"), r=$("rpt"); const k=Math.min(1,(st.clientWidth-32)/794); sc.style.transform=`scale(${k})`; sc.style.height=(r.offsetHeight*k)+"px"; sc.style.width=(794*k)+"px"; }
+  async function renderCanvas(){
+    await need("h2c",()=>window.html2canvas);
+    const host=document.createElement("div"); host.style.cssText="position:absolute;left:-10000px;top:0;width:794px;";
+    const clone=$("rpt").cloneNode(true); clone.id="rpt-capture"; clone.style.boxShadow="none"; host.appendChild(clone); document.body.appendChild(host);
+    try{
+      await (document.fonts?.ready||Promise.resolve());
+      const canvas=await html2canvas(clone,{scale:2,backgroundColor:"#ffffff",useCORS:true,logging:false,windowWidth:900});
+      const breaks=[...clone.querySelectorAll(".rsec,.rfoot")].map(el=>el.offsetTop);
+      return {canvas,breaks,cssH:clone.offsetHeight};
+    } finally { host.remove(); }
+  }
+  async function makePdf(cap){
+    await need("pdf",()=>window.jspdf&&window.jspdf.jsPDF);
+    const {canvas,breaks,cssH}=cap, k=canvas.width/794, pageH=794*297/210;
+    const pages=[]; let start=0;
+    while(start<cssH-2){ const top=pages.length?24:0; let end=Math.min(cssH,start+pageH-top);
+      if(end<cssH){ const b=breaks.filter(y=>y>start+pageH*0.35&&y<=end).pop(); if(b) end=b; }
+      pages.push([start,end,top]); start=end; }
+    const doc=new window.jspdf.jsPDF({unit:"mm",format:"a4",compress:true});
+    pages.forEach(([a,b,top],i)=>{ if(i) doc.addPage();
+      const pc=document.createElement("canvas"); pc.width=canvas.width; pc.height=Math.round(pageH*k);
+      const g=pc.getContext("2d"); g.fillStyle="#fff"; g.fillRect(0,0,pc.width,pc.height);
+      g.drawImage(canvas,0,Math.round(a*k),canvas.width,Math.round((b-a)*k),0,Math.round(top*k),canvas.width,Math.round((b-a)*k));
+      doc.addImage(pc.toDataURL("image/jpeg",0.92),"JPEG",0,0,210,297);
+      doc.setFontSize(8); doc.setTextColor(120); doc.text(`${i+1} / ${pages.length}`,200,292,{align:"right"});
+    });
+    return doc.output("blob");
+  }
+  async function prepareOutputs(){
+    const my=++building; OUT=null;
+    ["x-share-pdf","x-share-img","x-pdf","x-img"].forEach(id=>$(id).disabled=true);
+    rmsg("PDF와 그림 파일을 만드는 중입니다…");
+    try{
+      const cap=await renderCanvas(); if(my!==building) return;
+      const img=await new Promise(r=>cap.canvas.toBlob(r,"image/png"));
+      let pdf=null; try{ pdf=await makePdf(cap); }catch(e){}
+      if(my!==building) return;
+      OUT={pdf,img};
+      $("x-share-img").disabled=$("x-img").disabled=!img;
+      $("x-share-pdf").disabled=$("x-pdf").disabled=!pdf;
+      rmsg(inFrame?"이 미리보기 화면에서는 인쇄 · 저장 · 공유가 막혀 있을 수 있습니다. Vercel에 올린 사이트나 HTML 파일에서 사용하세요.":(pdf?"":"PDF를 만들지 못했습니다. 그림 파일로 보내거나 인쇄에서 PDF로 저장을 고르세요."));
+    }catch(e){
+      rmsg("파일 변환 도구를 불러오지 못했습니다. 인터넷 연결을 확인하세요. 인쇄 버튼은 그대로 쓸 수 있습니다.");
+    }
+  }
+  function openReport(){
+    META=buildReport();
+    $("rpt-modal").hidden=false; document.documentElement.style.overflow="hidden";
+    requestAnimationFrame(()=>{ fitReport(); $("rstage").scrollTop=0; });
+    prepareOutputs();
+  }
+  function closeReport(){ $("rpt-modal").hidden=true; document.documentElement.style.overflow=""; building++; }
+  $("r-open").addEventListener("click",openReport); $("r-open2").addEventListener("click",openReport);
+  $("x-close").addEventListener("click",closeReport);
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("rpt-modal").hidden) closeReport(); });
+  window.addEventListener("resize",()=>{ if(!$("rpt-modal").hidden) fitReport(); });
+  $("x-print").addEventListener("click",()=>{ try{ window.print(); }catch(e){} });
+  function save(blob,name){
+    const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  }
+  function share(kind){
+    const blob=OUT&&OUT[kind]; if(!blob) return;
+    const name=META.fname+(kind==="pdf"?".pdf":".png");
+    const file=new File([blob],name,{type:kind==="pdf"?"application/pdf":"image/png"});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){
+      navigator.share({files:[file],title:META.title,text:META.title}).catch(err=>{ if(err&&err.name!=="AbortError") rmsg("공유 창을 열지 못했습니다. 저장 버튼으로 파일을 저장한 뒤 카카오톡에서 파일로 보내세요."); });
+    } else {
+      save(blob,name);
+      rmsg("이 기기에서는 바로 공유가 지원되지 않아 파일로 저장했습니다. 카카오톡 채팅방의 + → 파일(또는 사진)에서 저장한 파일을 보내세요.");
+    }
+  }
+  $("x-share-pdf").addEventListener("click",()=>share("pdf"));
+  $("x-share-img").addEventListener("click",()=>share("img"));
+  $("x-pdf").addEventListener("click",()=>OUT&&OUT.pdf&&save(OUT.pdf,META.fname+".pdf"));
+  $("x-img").addEventListener("click",()=>OUT&&OUT.img&&save(OUT.img,META.fname+".png"));
 
   window.__calc = {ps,tFromP};
   calc();

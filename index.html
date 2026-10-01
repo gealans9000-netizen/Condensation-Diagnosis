@@ -210,6 +210,7 @@ details.paste[open] summary{margin-bottom:8px}
 .mtbl table{min-width:560px}
 
 /* ── GTC 400 C 열화상 뷰어 ── */
+#gtc-views:empty,#v-list:empty,.thumbs:empty{display:none}
 .gtc-card{border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px;background:var(--panel)}
 .gtc-card canvas{width:100%;height:auto;display:block;border-radius:6px;touch-action:manipulation;cursor:crosshair;background:#000}
 .gtc-card .vis{width:100%;border-radius:6px;display:block}
@@ -386,7 +387,7 @@ section[id]{scroll-margin-top:64px}
     <p class="lead-long">실내외 온도, 실내 습도, 창호 성능과 실내 표면 조건으로 창의 부위별 표면온도를 구합니다. 표면 결로, 곰팡이, 결빙 가능성을 판정하고 결로가 시작되는 한계 습도와 외기온도도 알려줍니다. DIN EN ISO 13788과 국내 결로방지 설계기준 방식을 따릅니다.</p>
   </header>
   <nav class="snav" aria-label="바로가기">
-    <a href="#sec-input">입력</a><a href="#sec-data" id="nav-data" hidden>측정</a><a href="#sec-result">결과</a><a href="#sec-parts">부위별</a><a href="#sec-map">위험 지도</a><a href="#sec-vent" id="nav-vent" hidden>환기</a><a href="#sec-tips">조치</a><a href="#sec-report">결과서</a>
+    <a href="#sec-input">입력</a><a href="#sec-tsm">표면온도</a><a href="#sec-import">605i</a><a href="#sec-vin">405i</a><a href="#sec-data" id="nav-data" hidden>측정</a><a href="#sec-result">결과</a><a href="#sec-parts">부위별</a><a href="#sec-map">위험 지도</a><a href="#sec-vent" id="nav-vent" hidden>환기</a><a href="#sec-tips">조치</a><a href="#sec-report">결과서</a>
   </nav>
 
   <div class="grid">
@@ -422,42 +423,6 @@ section[id]{scroll-margin-top:64px}
           <div class="scale-ends"><span>10%</span><span>95%</span></div>
         </div>
         <p class="srcnote" id="src-note" hidden></p>
-        <label class="check"><input type="checkbox" id="tsm-on"><span>창 표면온도 실측 (열화상 카메라)<br><small class="hint">Bosch GTC 400 C 등으로 잰 부위별 온도. 잰 부위만 넣으면 됩니다.</small></span></label>
-        <div class="sub" id="tsm-box" hidden>
-          <div class="field">
-            <label class="btn primary" for="gtc-file" style="display:flex;align-items:center;justify-content:center">GTC 400 C 사진 불러오기</label>
-            <input type="file" id="gtc-file" accept="image/jpeg,image/*" multiple hidden>
-            <p class="hint">카메라가 한 번 촬영할 때 저장하는 두 장 중 <b>일반 사진 파일</b>에 온도 정보가 들어 있습니다. 불러온 뒤 열화상에서 부위를 누르면 그 지점 온도가 아래 칸에 들어갑니다. 온도 정보가 없는 화면 캡처는 결과서 사진으로만 넣습니다.</p>
-            <p class="status" id="gtc-status" hidden></p>
-          </div>
-          <div id="gtc-views" class="vlist"></div>
-          <div class="tsm-grid">
-            <div class="field"><label for="tsm1">유리 모서리 ℃</label><input type="number" id="tsm1" step="0.1" inputmode="decimal" placeholder="—"></div>
-            <div class="field"><label for="tsm0">유리 중앙부 ℃</label><input type="number" id="tsm0" step="0.1" inputmode="decimal" placeholder="—"></div>
-            <div class="field"><label for="tsm2">창틀 · 창짝 ℃</label><input type="number" id="tsm2" step="0.1" inputmode="decimal" placeholder="—"></div>
-            <div class="field"><label for="tsm3">창 주변 벽 · 구석 ℃</label><input type="number" id="tsm3" step="0.1" inputmode="decimal" placeholder="—"></div>
-          </div>
-          <div class="field">
-            <label for="tsm-dev">측정 장비</label>
-            <select id="tsm-dev">
-              <option value="gtc" selected>Bosch GTC 400 C 열화상 카메라 (정확도 ±3℃)</option>
-              <option value="ir">기타 적외선 온도계 (±1.5℃)</option>
-              <option value="contact">접촉식 표면온도계 (±0.5℃)</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="tsm-ref">기준면 보정 · 실내 벽 중앙 표면온도 <small>선택</small></label>
-            <input type="number" id="tsm-ref" step="0.1" inputmode="decimal" placeholder="같은 카메라로 잰 값 ℃" style="width:100%">
-            <p class="hint">창에서 1m 이상 떨어진 실내 벽 가운데를 같은 카메라로 재서 넣으면, 카메라의 고정 오차를 빼고 판정합니다. 열화상 카메라는 ±3℃까지 틀릴 수 있어 권장합니다.</p>
-          </div>
-          <div class="field">
-            <span class="lbl" style="font-size:.85rem">추가 사진 <small>열화상 화면 캡처 등 · 결과서에 들어갑니다</small></span>
-            <div class="thumbs" id="th-thumbs"></div>
-            <label class="btn" for="th-photo" style="display:flex;align-items:center;justify-content:center;max-width:220px">사진 추가</label>
-            <input type="file" id="th-photo" accept="image/*" multiple hidden>
-          </div>
-          <p class="hint">측정 요령: 방사율은 0.93(콘크리트·석고 설정)이 유리와 PVC에 맞습니다. 알루미늄 같은 금속면은 반사 때문에 값이 틀리니 절연 테이프를 붙이고 테이프 위를 재세요. 유리는 정면에서 찍어야 반사가 섞이지 않습니다.</p>
-        </div>
         <hr class="sep">
         <div class="field">
           <label for="win">창호 종류</label>
@@ -521,8 +486,49 @@ section[id]{scroll-margin-top:64px}
       </div>
     </section>
 
+    <section class="panel" id="sec-tsm" aria-label="창 표면온도 실측">
+      <h2>창 표면온도 실측 (Bosch GTC 400 C)</h2>
+      <p class="hint" style="margin:-6px 0 12px">열화상 카메라로 잰 부위별 온도를 넣으면 계산과 별도로 실제 측정 기준으로도 판정합니다. 잰 부위만 넣으면 됩니다.</p>
+      <input type="checkbox" id="tsm-on" checked hidden>
+      <div class="inputs" id="tsm-box">
+          <div class="field">
+            <label class="btn primary" for="gtc-file" style="display:flex;align-items:center;justify-content:center">GTC 400 C 사진 불러오기</label>
+            <input type="file" id="gtc-file" accept="image/jpeg,image/*" multiple hidden>
+            <p class="hint">카메라가 한 번 촬영할 때 저장하는 두 장 중 <b>일반 사진 파일</b>에 온도 정보가 들어 있습니다. 불러온 뒤 열화상에서 부위를 누르면 그 지점 온도가 아래 칸에 들어갑니다. 온도 정보가 없는 화면 캡처는 결과서 사진으로만 넣습니다.</p>
+            <p class="status" id="gtc-status" hidden></p>
+          </div>
+          <div id="gtc-views" class="vlist"></div>
+          <div class="tsm-grid">
+            <div class="field"><label for="tsm1">유리 모서리 ℃</label><input type="number" id="tsm1" step="0.1" inputmode="decimal" placeholder="—"></div>
+            <div class="field"><label for="tsm0">유리 중앙부 ℃</label><input type="number" id="tsm0" step="0.1" inputmode="decimal" placeholder="—"></div>
+            <div class="field"><label for="tsm2">창틀 · 창짝 ℃</label><input type="number" id="tsm2" step="0.1" inputmode="decimal" placeholder="—"></div>
+            <div class="field"><label for="tsm3">창 주변 벽 · 구석 ℃</label><input type="number" id="tsm3" step="0.1" inputmode="decimal" placeholder="—"></div>
+          </div>
+          <div class="field">
+            <label for="tsm-dev">측정 장비</label>
+            <select id="tsm-dev">
+              <option value="gtc" selected>Bosch GTC 400 C 열화상 카메라 (정확도 ±3℃)</option>
+              <option value="ir">기타 적외선 온도계 (±1.5℃)</option>
+              <option value="contact">접촉식 표면온도계 (±0.5℃)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="tsm-ref">기준면 보정 · 실내 벽 중앙 표면온도 <small>선택</small></label>
+            <input type="number" id="tsm-ref" step="0.1" inputmode="decimal" placeholder="같은 카메라로 잰 값 ℃" style="width:100%">
+            <p class="hint">창에서 1m 이상 떨어진 실내 벽 가운데를 같은 카메라로 재서 넣으면, 카메라의 고정 오차를 빼고 판정합니다. 열화상 카메라는 ±3℃까지 틀릴 수 있어 권장합니다.</p>
+          </div>
+          <div class="field">
+            <span class="lbl" style="font-size:.85rem">추가 사진 <small>열화상 화면 캡처 등 · 결과서에 들어갑니다</small></span>
+            <div class="thumbs" id="th-thumbs"></div>
+            <label class="btn" for="th-photo" style="display:flex;align-items:center;justify-content:center;max-width:220px">사진 추가</label>
+            <input type="file" id="th-photo" accept="image/*" multiple hidden>
+          </div>
+          <p class="hint">측정 요령: 방사율은 0.93(콘크리트·석고 설정)이 유리와 PVC에 맞습니다. 알루미늄 같은 금속면은 반사 때문에 값이 틀리니 절연 테이프를 붙이고 테이프 위를 재세요. 유리는 정면에서 찍어야 반사가 섞이지 않습니다.</p>
+        </div>
+    </section>
+
     <section class="panel" id="sec-import" aria-label="측정 데이터 불러오기">
-      <h2>testo 605i 측정 데이터</h2>
+      <h2>실내 온습도 측정 (testo 605i)</h2>
       <div class="inputs">
         <div class="drop" id="drop">
           <p>testo Smart 앱에서 <b>Excel(CSV)로 내보낸 파일</b>을 선택하거나 여기에 끌어다 놓으세요.</p>
@@ -829,7 +835,6 @@ section[id]{scroll-margin-top:64px}
     n.addEventListener("input",()=>{ const v=parseFloat(n.value); if(!isNaN(v)){ r.value=clamp(v,min,max); clearPreset(); calc(); }});
   });
   ["win","rsi","c1","c2","c3","region","tsm0","tsm1","tsm2","tsm3","tsm-dev","tsm-ref","v-area","v-h","v-orh","v-win"].forEach(id=>$(id).addEventListener("input",calc));
-  $("tsm-on").addEventListener("input",()=>{ $("tsm-box").hidden=!$("tsm-on").checked; calc(); });
   $("wall-on").addEventListener("input",()=>{ $("wall-box").hidden=!$("wall-on").checked; calc(); });
   // 슬라이더 채움 표시
   const paintFill=r=>r.style.setProperty("--fill",((r.value-r.min)/(r.max-r.min)*100)+"%");
@@ -1050,7 +1055,7 @@ section[id]{scroll-margin-top:64px}
   const THERMAL=[];
   let MEAS=null;
   function measured(c){
-    const on=$("tsm-on").checked; $("sec-meas").hidden=!on; MEAS=null; if(!on) return;
+    MEAS=null;
     const dev=$("tsm-dev").value, names=["유리 중앙부","유리 모서리","창틀·창짝","창 주변 벽·구석"];
     // 기준면 보정: 실내 벽 중앙의 실제 표면온도 ≈ θi − Rsi·U·Δθ (외벽 U는 입력값, 기본 0.24)
     const ref=num("tsm-ref",-20,40), Uw=num("wu",0.1,3)??0.24;
@@ -1072,6 +1077,7 @@ section[id]{scroll-margin-top:64px}
       const dTs=tdr!=null?25-tdr*(25-regTo):null;
       rows.push({pi,name:names[pi],raw,Ts,rhs,gap,Pc,Pm,L,tdr,badT,stdLim,ok,dTs,dCond:dTs!=null&&dTs<=dTd});
     });
+    $("sec-meas").hidden=!rows.length;
     if(!rows.length){ $("me-pill").textContent="입력 대기"; $("me-pill").style.setProperty("--c","var(--muted)"); $("me-head").textContent="잰 부위의 표면온도를 넣으세요."; $("me-rows").innerHTML=""; $("me-note").textContent=""; return; }
     const worst=rows.reduce((a,r)=>r.Ts-c.Td<a.Ts-c.Td?r:a);
     const failStd=rows.filter(r=>r.ok===false), winterCond=rows.filter(r=>r.dCond);

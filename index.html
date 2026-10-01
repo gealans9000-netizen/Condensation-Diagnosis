@@ -182,6 +182,48 @@ details.paste[open] summary{margin-bottom:8px}
 .apply-row{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .apply-row .btn{flex:1 1 150px}
 
+/* ── 입력 출처 · 실측 표면온도 · 날씨 ── */
+.srcnote{margin:0;font-size:.82rem;padding:8px 10px;border-radius:6px;background:var(--sunk);border-left:3px solid var(--c,var(--glass));display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:space-between}
+.srcnote button{font:600 .78rem var(--f-body);border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:999px;padding:5px 10px;min-height:32px;cursor:pointer}
+.mini{font:600 .8rem var(--f-body);border:1px solid var(--line);background:var(--sunk);color:var(--fg);border-radius:8px;padding:8px 10px;min-height:38px;cursor:pointer;touch-action:manipulation}
+.mini:hover{border-color:var(--glass)}
+.meas-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+@media (max-width:700px){.meas-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.meas-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.meas-head h3{margin:0;font-size:1.05rem;text-wrap:balance}
+.dmeta{font-size:.8rem;color:var(--muted);margin:-6px 0 12px}
+
+/* ── 열화상 부위별 입력 · 환기 ── */
+.tsm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tsm-grid .field label{font-size:.8rem;font-weight:600}
+.tsm-grid input{width:100%;height:44px;font-size:1.05rem}
+.vlist{display:flex;flex-direction:column;gap:8px}
+.vrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 40px;gap:6px;align-items:end;padding:8px;border:1px solid var(--line);border-radius:8px}
+.vrow label{font-size:.7rem;color:var(--muted);display:block;margin-bottom:2px}
+.vrow input,.vrow select{width:100%;height:40px;font-size:.88rem;padding:6px 7px}
+.vrow input[type=text]{font:400 .88rem var(--f-body);color:var(--fg);background:var(--sunk);border:1px solid var(--line);border-radius:6px}
+.vrow .rm{height:40px;border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:6px;cursor:pointer;font-size:1.1rem}
+.vrow .vname{grid-column:1/-1}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.two input{width:100%}
+.mtbl{overflow-x:auto}
+.mtbl table{min-width:560px}
+
+/* ── GTC 400 C 열화상 뷰어 ── */
+.gtc-card{border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px;background:var(--panel)}
+.gtc-card canvas{width:100%;height:auto;display:block;border-radius:6px;touch-action:manipulation;cursor:crosshair;background:#000}
+.gtc-card .vis{width:100%;border-radius:6px;display:block}
+.gtc-info{font-size:.76rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px}
+.gtc-pick{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.85rem}
+.gtc-pick b{font-family:var(--f-mono);font-size:1rem}
+.gtc-pick button{font:600 .78rem var(--f-body);border:1px solid var(--line);background:var(--sunk);color:var(--fg);border-radius:999px;padding:6px 10px;min-height:34px;cursor:pointer}
+.gtc-pick button:hover{border-color:var(--glass)}
+.gtc-tabs{display:flex;gap:6px}
+.gtc-tabs button{flex:1;font:600 .78rem var(--f-body);border:1px solid var(--line);background:var(--sunk);color:var(--fg);border-radius:6px;padding:6px;min-height:34px;cursor:pointer}
+.gtc-tabs button[aria-pressed="true"]{background:var(--glass);border-color:var(--glass);color:var(--panel)}
+.gtc-head{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.82rem;font-weight:600}
+.gtc-head button{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:6px;width:30px;height:30px;cursor:pointer}
+
 /* ── 진단결과서 입력 ── */
 .rform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media (max-width:560px){.rform{grid-template-columns:minmax(0,1fr)}}
@@ -225,7 +267,9 @@ details.paste[open] summary{margin-bottom:8px}
 .rpt th{background:var(--sunk);color:var(--fg);font-weight:600;font-size:11px;letter-spacing:0;width:auto}
 .rpt .kv th{width:17%}
 .rpt .kv td{width:33%}
-.rpt .parts th,.rpt .parts td{text-align:right}
+.rpt .parts th,.rpt .parts td{text-align:right;white-space:nowrap;padding:5px 6px}
+.rpt .parts th{white-space:normal}
+.rpt .tag{white-space:nowrap;font-size:10px;padding:1px 5px}
 .rpt .parts th:first-child,.rpt .parts td:first-child{text-align:left}
 .rpt .m{font-family:var(--f-mono)}
 .rpt .verdict-box{border:1.5px solid var(--c);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
@@ -342,7 +386,7 @@ section[id]{scroll-margin-top:64px}
     <p class="lead-long">실내외 온도, 실내 습도, 창호 성능과 실내 표면 조건으로 창의 부위별 표면온도를 구합니다. 표면 결로, 곰팡이, 결빙 가능성을 판정하고 결로가 시작되는 한계 습도와 외기온도도 알려줍니다. DIN EN ISO 13788과 국내 결로방지 설계기준 방식을 따릅니다.</p>
   </header>
   <nav class="snav" aria-label="바로가기">
-    <a href="#sec-input">입력</a><a href="#sec-data" id="nav-data" hidden>측정</a><a href="#sec-result">결과</a><a href="#sec-parts">부위별</a><a href="#sec-map">위험 지도</a><a href="#sec-tips">조치</a><a href="#sec-report">결과서</a>
+    <a href="#sec-input">입력</a><a href="#sec-data" id="nav-data" hidden>측정</a><a href="#sec-result">결과</a><a href="#sec-parts">부위별</a><a href="#sec-map">위험 지도</a><a href="#sec-vent" id="nav-vent" hidden>환기</a><a href="#sec-tips">조치</a><a href="#sec-report">결과서</a>
   </nav>
 
   <div class="grid">
@@ -363,6 +407,7 @@ section[id]{scroll-margin-top:64px}
             <div class="stepper"><button type="button" data-for="to" data-inc="0.5" data-dir="-1" aria-label="외부 온도 θe 낮추기">−</button><input type="number" id="to" min="-30" max="25" step="0.1" value="-5"><span class="unit">℃</span><button type="button" data-for="to" data-inc="0.5" data-dir="1" aria-label="외부 온도 θe 높이기">+</button></div></div>
           <input type="range" class="touch" id="to-r" min="-30" max="25" step="0.5" value="-5" aria-label="외부 온도 θe 슬라이더">
           <div class="scale-ends"><span>−30</span><span>25</span></div>
+          <button type="button" class="mini" id="wx">현재 위치 날씨로 외부 온도 채우기</button>
         </div>
         <div class="field">
           <div class="lbl-row"><label for="ti">내부 온도 θi <small>10 ~ 30℃</small></label>
@@ -375,6 +420,43 @@ section[id]{scroll-margin-top:64px}
             <div class="stepper"><button type="button" data-for="rh" data-dir="-1" aria-label="내부 상대습도 φi 낮추기">−</button><input type="number" id="rh" min="10" max="95" step="1" value="55"><span class="unit">%</span><button type="button" data-for="rh" data-dir="1" aria-label="내부 상대습도 φi 높이기">+</button></div></div>
           <input type="range" class="touch" id="rh-r" min="10" max="95" step="1" value="55" aria-label="내부 상대습도 φi 슬라이더">
           <div class="scale-ends"><span>10%</span><span>95%</span></div>
+        </div>
+        <p class="srcnote" id="src-note" hidden></p>
+        <label class="check"><input type="checkbox" id="tsm-on"><span>창 표면온도 실측 (열화상 카메라)<br><small class="hint">Bosch GTC 400 C 등으로 잰 부위별 온도. 잰 부위만 넣으면 됩니다.</small></span></label>
+        <div class="sub" id="tsm-box" hidden>
+          <div class="field">
+            <label class="btn primary" for="gtc-file" style="display:flex;align-items:center;justify-content:center">GTC 400 C 사진 불러오기</label>
+            <input type="file" id="gtc-file" accept="image/jpeg,image/*" multiple hidden>
+            <p class="hint">카메라가 한 번 촬영할 때 저장하는 두 장 중 <b>일반 사진 파일</b>에 온도 정보가 들어 있습니다. 불러온 뒤 열화상에서 부위를 누르면 그 지점 온도가 아래 칸에 들어갑니다. 온도 정보가 없는 화면 캡처는 결과서 사진으로만 넣습니다.</p>
+            <p class="status" id="gtc-status" hidden></p>
+          </div>
+          <div id="gtc-views" class="vlist"></div>
+          <div class="tsm-grid">
+            <div class="field"><label for="tsm1">유리 모서리 ℃</label><input type="number" id="tsm1" step="0.1" inputmode="decimal" placeholder="—"></div>
+            <div class="field"><label for="tsm0">유리 중앙부 ℃</label><input type="number" id="tsm0" step="0.1" inputmode="decimal" placeholder="—"></div>
+            <div class="field"><label for="tsm2">창틀 · 창짝 ℃</label><input type="number" id="tsm2" step="0.1" inputmode="decimal" placeholder="—"></div>
+            <div class="field"><label for="tsm3">창 주변 벽 · 구석 ℃</label><input type="number" id="tsm3" step="0.1" inputmode="decimal" placeholder="—"></div>
+          </div>
+          <div class="field">
+            <label for="tsm-dev">측정 장비</label>
+            <select id="tsm-dev">
+              <option value="gtc" selected>Bosch GTC 400 C 열화상 카메라 (정확도 ±3℃)</option>
+              <option value="ir">기타 적외선 온도계 (±1.5℃)</option>
+              <option value="contact">접촉식 표면온도계 (±0.5℃)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="tsm-ref">기준면 보정 · 실내 벽 중앙 표면온도 <small>선택</small></label>
+            <input type="number" id="tsm-ref" step="0.1" inputmode="decimal" placeholder="같은 카메라로 잰 값 ℃" style="width:100%">
+            <p class="hint">창에서 1m 이상 떨어진 실내 벽 가운데를 같은 카메라로 재서 넣으면, 카메라의 고정 오차를 빼고 판정합니다. 열화상 카메라는 ±3℃까지 틀릴 수 있어 권장합니다.</p>
+          </div>
+          <div class="field">
+            <span class="lbl" style="font-size:.85rem">추가 사진 <small>열화상 화면 캡처 등 · 결과서에 들어갑니다</small></span>
+            <div class="thumbs" id="th-thumbs"></div>
+            <label class="btn" for="th-photo" style="display:flex;align-items:center;justify-content:center;max-width:220px">사진 추가</label>
+            <input type="file" id="th-photo" accept="image/*" multiple hidden>
+          </div>
+          <p class="hint">측정 요령: 방사율은 0.93(콘크리트·석고 설정)이 유리와 PVC에 맞습니다. 알루미늄 같은 금속면은 반사 때문에 값이 틀리니 절연 테이프를 붙이고 테이프 위를 재세요. 유리는 정면에서 찍어야 반사가 섞이지 않습니다.</p>
         </div>
         <hr class="sep">
         <div class="field">
@@ -470,11 +552,32 @@ section[id]{scroll-margin-top:64px}
         </div>
       </div>
     </section>
+
+    <section class="panel" id="sec-vin" aria-label="환기 측정">
+      <h2>환기 · 기류 측정 (testo 405i)</h2>
+      <div class="inputs">
+        <div class="btn-row">
+          <label class="btn primary" for="v-file" style="display:flex;align-items:center;justify-content:center">405i 파일 불러오기</label>
+          <button type="button" class="btn" id="v-add">측정 위치 직접 추가</button>
+        </div>
+        <input type="file" id="v-file" accept=".csv,.txt,.xlsx,.xls,text/csv" hidden>
+        <p class="status" id="v-status" hidden></p>
+        <div class="vlist" id="v-list"></div>
+        <div class="two">
+          <div class="field"><label for="v-area">바닥 면적 <small>m²</small></label><input type="number" id="v-area" step="0.1" min="1" inputmode="decimal" placeholder="예: 84"></div>
+          <div class="field"><label for="v-h">천장 높이 <small>m</small></label><input type="number" id="v-h" step="0.05" min="2" value="2.3" inputmode="decimal"></div>
+          <div class="field"><label for="v-orh">외기 상대습도 <small>%</small></label><input type="number" id="v-orh" step="1" min="5" max="100" value="70" inputmode="decimal"></div>
+          <div class="field"><label for="v-win">창 앞 풍속 <small>m/s · 선택</small></label><input type="number" id="v-win" step="0.01" min="0" inputmode="decimal" placeholder="유리 5cm 앞"></div>
+        </div>
+        <p class="hint">배기구(주방 후드, 욕실 환풍기, 환기장치 배기)의 풍량을 재서 넣으세요. 풍량 칸이 비어 있으면 풍속 × 개구 면적으로 계산합니다. 외기 습도는 날씨 버튼을 누르면 함께 채워집니다.</p>
+      </div>
+    </section>
     </div>
 
     <div class="results">
       <section class="panel" id="sec-data" hidden>
         <h2>측정 데이터 분석 <small id="d-src"></small></h2>
+        <p class="dmeta" id="d-meta"></p>
         <div class="dsum" id="d-sum"></div>
         <div class="apply-row">
           <button type="button" class="btn primary" data-pick="worst">가장 위험한 순간으로 진단</button>
@@ -523,6 +626,20 @@ section[id]{scroll-margin-top:64px}
         </div>
         <ul class="tile-notes" id="tile-notes"></ul>
         <div class="report-cta"><button type="button" class="btn" id="r-open2">진단결과서 만들기 · 인쇄 · 카톡 공유</button></div>
+      </section>
+
+      <section class="panel" id="sec-meas" hidden>
+        <h2>실측 표면온도 판정 <small id="me-dev"></small></h2>
+        <div class="meas-head"><span class="pill" id="me-pill">—</span><h3 id="me-head">—</h3></div>
+        <div class="mtbl"><table><thead><tr><th>부위</th><th>측정</th><th>보정 후</th><th>이슬점 여유</th><th>표면습도</th><th>판정</th><th>실측 TDR</th><th id="me-std">설계기준</th><th>겨울 설계조건</th></tr></thead><tbody id="me-rows"></tbody></table></div>
+        <p class="hint" id="me-note" style="margin-top:10px"></p>
+      </section>
+
+      <section class="panel" id="sec-vent" hidden>
+        <h2>환기 진단 <small>· testo 405i</small></h2>
+        <div class="meas-head"><span class="pill" id="ve-pill">—</span><h3 id="ve-head">—</h3></div>
+        <div class="meas-grid" id="ve-grid"></div>
+        <p class="hint" id="ve-note" style="margin-top:10px"></p>
       </section>
 
       <section class="panel">
@@ -594,6 +711,16 @@ section[id]{scroll-margin-top:64px}
             <input type="file" id="r-photo" accept="image/*" multiple hidden>
           </div>
         </div>
+        <details class="adv" style="margin-top:12px">
+          <summary>측정 장비 정보 (결과서에 표시)</summary>
+          <div class="rform">
+            <div class="field"><label for="eq-605">testo 605i 일련번호</label><input type="text" id="eq-605" placeholder="파일에서 자동 입력"></div>
+            <div class="field"><label for="eq-405">testo 405i 일련번호</label><input type="text" id="eq-405" placeholder="파일에서 자동 입력"></div>
+            <div class="field"><label for="eq-gtc">Bosch GTC 400 C 일련번호</label><input type="text" id="eq-gtc" placeholder="장비 뒷면 표기"></div>
+            <div class="field"><label for="eq-cal">최근 교정일 <small>선택</small></label><input type="text" id="eq-cal" placeholder="예: 2026-03-15"></div>
+          </div>
+          <p class="hint">결과서에는 이번 진단에 실제로 쓴 장비만 나옵니다. 입력값은 이 기기에 기억됩니다.</p>
+        </details>
         <div class="report-cta">
           <button type="button" class="btn primary" id="r-open">진단결과서 만들기</button>
         </div>
@@ -701,7 +828,8 @@ section[id]{scroll-margin-top:64px}
     r.addEventListener("input",()=>{ n.value=r.value; clearPreset(); calc(); });
     n.addEventListener("input",()=>{ const v=parseFloat(n.value); if(!isNaN(v)){ r.value=clamp(v,min,max); clearPreset(); calc(); }});
   });
-  ["win","rsi","c1","c2","c3","region"].forEach(id=>$(id).addEventListener("input",calc));
+  ["win","rsi","c1","c2","c3","region","tsm0","tsm1","tsm2","tsm3","tsm-dev","tsm-ref","v-area","v-h","v-orh","v-win"].forEach(id=>$(id).addEventListener("input",calc));
+  $("tsm-on").addEventListener("input",()=>{ $("tsm-box").hidden=!$("tsm-on").checked; calc(); });
   $("wall-on").addEventListener("input",()=>{ $("wall-box").hidden=!$("wall-on").checked; calc(); });
   // 슬라이더 채움 표시
   const paintFill=r=>r.style.setProperty("--fill",((r.value-r.min)/(r.max-r.min)*100)+"%");
@@ -860,6 +988,8 @@ section[id]{scroll-margin-top:64px}
 
     drawMap(Ti,To,RH,worst.tdr,moldRH);
     tips({Pc,Pm,Pf,RH,rhc,rhm,toc,worst,Rsi,w,parts,heat});
+    measured({To,Ti,RH,Td,Tmold,p,moldRH,parts,region,dT});
+    ventCalc({To,Ti,RH,rhmWorst:heat?rhm:null});
     if(DATA) scheduleAnalyze();
   }
 
@@ -909,6 +1039,276 @@ section[id]{scroll-margin-top:64px}
   const goResult=()=>$("sec-result").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
   $("mbar").addEventListener("click",goResult);
   $("mbar").addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); goResult(); } });
+
+  // 장비 사양 (결과서 · 판정 불확실성)
+  const EQUIP={
+    "605":{name:"testo 605i 스마트 온습도계",maker:"Testo",use:"실내 공기 온도 · 상대습도 · 이슬점",spec:"온도 −20~60℃ (±0.5~0.8℃) · 습도 0~100%RH (±2.0~5.0%RH)"},
+    "405":{name:"testo 405i 스마트 열선 풍속계",maker:"Testo",use:"배기구 풍속 · 풍량, 창 앞 기류",spec:"풍속 0~30 m/s (±0.1 m/s + 측정값 5%, 0~2 m/s) · 온도 −20~60℃ (±0.5℃)"},
+    "gtc":{name:"Bosch GTC 400 C 열화상 카메라",maker:"Bosch",use:"창 · 벽 표면온도 분포",spec:"−10~400℃ (±3℃, 0~100℃) · 적외선 160×120 화소"}
+  };
+  const TSM_SIG={gtc:1.5, ir:0.8, contact:0.3};
+  const THERMAL=[];
+  let MEAS=null;
+  function measured(c){
+    const on=$("tsm-on").checked; $("sec-meas").hidden=!on; MEAS=null; if(!on) return;
+    const dev=$("tsm-dev").value, names=["유리 중앙부","유리 모서리","창틀·창짝","창 주변 벽·구석"];
+    // 기준면 보정: 실내 벽 중앙의 실제 표면온도 ≈ θi − Rsi·U·Δθ (외벽 U는 입력값, 기본 0.24)
+    const ref=num("tsm-ref",-20,40), Uw=num("wu",0.1,3)??0.24;
+    const refExpect=c.Ti-0.13*Uw*Math.max(0,c.dT), offset=ref!=null?ref-refExpect:0;
+    const sig=ref!=null?Math.min(TSM_SIG[dev],0.6):TSM_SIG[dev];
+    const regName=["중부1","중부2","남부"][c.region], regTo=[-20,-15,-10][c.region], dTd=tFromP(0.5*ps(25));
+    $("me-std").textContent=`설계기준 (${regName})`;
+    $("me-dev").textContent="· "+(dev==="gtc"?"Bosch GTC 400 C":dev==="ir"?"적외선 온도계":"접촉식 온도계")+(ref!=null?` · 기준면 보정 ${offset>=0?"−":"+"}${f1(Math.abs(offset))}℃`:"");
+    const rows=[];
+    [0,1,2,3].forEach(pi=>{
+      const raw=num("tsm"+pi,-30,60); if(raw==null) return;
+      const Ts=raw-offset, rhs=Math.min(100,c.p/ps(Ts)*100), gap=Ts-c.Td;
+      const Pc=Phi((c.Td-Ts)/sig)*100, Pm=Phi((c.Tmold-Ts)/sig)*100;
+      let L;
+      if(Ts<=c.Td) L={t:"결로",c:"var(--crit)"}; else if(rhs>=c.moldRH*100) L={t:"곰팡이 위험",c:"var(--bad)"}; else if(Math.max(Pc,Pm)>=40||gap<2) L={t:"주의",c:"var(--warn)"}; else L={t:"안전",c:"var(--ok)"};
+      const tdrRaw=c.dT>=5?(c.Ti-Ts)/c.dT:null, badT=tdrRaw!=null&&(tdrRaw<=0||tdrRaw>=1), tdr=badT?null:tdrRaw;
+      const stdLim=pi<3?STD[pi][c.region]:null;
+      const ok = tdr==null?null : pi<3 ? tdr<=stdLim : (1-tdr)>=0.70;
+      const dTs=tdr!=null?25-tdr*(25-regTo):null;
+      rows.push({pi,name:names[pi],raw,Ts,rhs,gap,Pc,Pm,L,tdr,badT,stdLim,ok,dTs,dCond:dTs!=null&&dTs<=dTd});
+    });
+    if(!rows.length){ $("me-pill").textContent="입력 대기"; $("me-pill").style.setProperty("--c","var(--muted)"); $("me-head").textContent="잰 부위의 표면온도를 넣으세요."; $("me-rows").innerHTML=""; $("me-note").textContent=""; return; }
+    const worst=rows.reduce((a,r)=>r.Ts-c.Td<a.Ts-c.Td?r:a);
+    const failStd=rows.filter(r=>r.ok===false), winterCond=rows.filter(r=>r.dCond);
+    let head=worst.Ts<=c.Td?`${worst.name} 표면 ${f1(worst.Ts)}℃가 이슬점 ${f1(c.Td)}℃ 이하입니다. 지금 이 부위에 물이 맺힙니다.`
+      : worst.rhs>=c.moldRH*100?`${worst.name} 표면 습도가 ${Math.round(worst.rhs)}%로 곰팡이 기준을 넘습니다.`
+      : `가장 차가운 ${worst.name}도 이슬점보다 ${f1(worst.gap)}℃ 높아 지금은 결로가 없습니다.`;
+    if(winterCond.length) head+=` 다만 겨울 설계조건(${regTo}℃)에서는 ${winterCond.map(r=>r.name).join(", ")}에 결로가 예상됩니다.`;
+    else if(failStd.length) head+=` 설계기준에는 ${failStd.map(r=>r.name).join(", ")}이(가) 미달합니다.`;
+    const L=worst.L.t!=="안전"?worst.L:(winterCond.length||failStd.length?{t:"겨울철 주의",c:"var(--warn)"}:worst.L);
+    $("me-pill").textContent=L.t; $("me-pill").style.setProperty("--c",L.c); $("me-head").textContent=head;
+    const cellC=(v,col)=>`<td class="m" style="${col?`color:${col};font-weight:600`:""}">${v}</td>`;
+    const html=rows.map(r=>`<tr><td>${r.name}</td>${cellC(f1(r.raw)+" ℃")}${cellC(f1(r.Ts)+" ℃")}${cellC((r.gap>=0?"+":"")+f1(r.gap)+" ℃",r.gap<0?"var(--crit)":r.gap<2?"var(--warn)":"")}${cellC(Math.round(r.rhs)+" %",r.rhs>=c.moldRH*100?"var(--bad)":"")}<td><span class="tag" style="color:${r.L.c}">${r.L.t}</span></td>${cellC(r.tdr!=null?f2(r.tdr):r.badT?"확인 필요":"—",r.badT?"var(--warn)":"")}<td>${r.ok==null?"—":`<span class="tag" style="color:${r.ok?"var(--ok)":"var(--crit)"}">${r.ok?"적합":"부적합"} ${r.pi<3?f2(r.tdr)+"/"+f2(r.stdLim):"fRsi "+f2(1-r.tdr)}</span>`}</td>${cellC(r.dTs!=null?`${f1(r.dTs)}℃ ${r.dCond?"결로":"안전"}`:"—",r.dTs!=null?(r.dCond?"var(--crit)":"var(--ok)"):"")}</tr>`).join("");
+    $("me-rows").innerHTML=html;
+    const notes=[];
+    if(c.dT<5) notes.push(`실내외 온도차가 ${f1(c.dT)}℃라 실측 TDR을 구하지 않았습니다. 5℃ 이상일 때(가능하면 10℃ 이상) 재야 설계기준 판정을 믿을 수 있습니다.`);
+    if(rows.some(r=>r.badT)) notes.push("표면온도가 외부 온도보다 낮거나 실내 온도보다 높게 나온 부위가 있습니다. 외부 온도 입력, 햇빛, 반사, 난방기 영향을 확인하세요.");
+    if(dev==="gtc"&&ref==null) notes.push("열화상 카메라 정확도(±3℃)를 반영해 판정 여유를 넓게 잡았습니다. 기준면 보정값을 넣으면 더 정확해집니다.");
+    notes.push(`겨울 설계조건은 실내 25℃·50%, 외기 ${regTo}℃(${regName})에서 실측 TDR로 계산한 표면온도입니다.`);
+    $("me-note").textContent=notes.join(" ");
+    MEAS={rows,L,head,dev,offset,ref,html,notes:notes.join(" ")};
+  }
+  // 열화상 사진
+  function renderThermal(){ $("th-thumbs").innerHTML=THERMAL.map((u,i)=>`<figure><img src="${u}" alt="열화상 사진 ${i+1}"><button type="button" data-rm="${i}" aria-label="열화상 ${i+1} 빼기">×</button></figure>`).join(""); }
+  $("th-thumbs").addEventListener("click",e=>{ const b=e.target.closest("[data-rm]"); if(b){ THERMAL.splice(+b.dataset.rm,1); renderThermal(); } });
+  $("th-photo").addEventListener("change",async e=>{ for(const f of [...e.target.files]){ if(THERMAL.length>=4) break; const u=await shrinkImage(f); if(u) THERMAL.push(u); } e.target.value=""; renderThermal(); });
+  async function shrinkImage(f){
+    try{ const url=URL.createObjectURL(f); const img=await new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=url; });
+      const k=Math.min(1,1200/Math.max(img.width,img.height)); const cv=document.createElement("canvas"); cv.width=Math.round(img.width*k); cv.height=Math.round(img.height*k);
+      cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height); URL.revokeObjectURL(url); return cv.toDataURL("image/jpeg",0.88); }catch(err){ return null; }
+  }
+
+  // ══════════ Bosch GTC 400 C 열화상 파일 ══════════
+  // 일반 사진 JPG의 APP15 구역에 "GTC_400C" 머리말 + 160×120 온도값(16비트, 값×0.01−100 = ℃) + 설정값(눈금 최저·최고, 반사온도, 중심온도, 방사율)
+  const THERMOS=[];
+  function parseGTC(buf){
+    const b=new Uint8Array(buf); if(b[0]!==0xFF||b[1]!==0xD8) return null;
+    let i=2;
+    while(i+4<b.length&&b[i]===0xFF){
+      const m=b[i+1]; if(m===0xD8||(m>=0xD0&&m<=0xD7)||m===0x01){ i+=2; continue; }
+      const L=(b[i+2]<<8)|b[i+3]; if(m===0xDA) break;
+      if(m===0xEF){
+        const seg=b.subarray(i+4,i+2+L), head=String.fromCharCode(...seg.subarray(0,32)).replace(/[^\x20-\x7e]/g," ");
+        const mm=head.match(/GTC_?\s*(\w+)/);
+        if(mm){
+          const W=160,H=120,off=32,n=W*H; if(seg.length<off+n*2) return null;
+          const dv=new DataView(seg.buffer,seg.byteOffset,seg.byteLength), T=new Float32Array(n);
+          for(let k=0;k<n;k++) T[k]=dv.getUint16(off+k*2,true)*0.01-100;
+          const t=off+n*2, fl=o=>t+o+4<=seg.length?dv.getFloat32(t+o,true):NaN;
+          let mn=Infinity,mx=-Infinity,ai=0,xi=0; for(let k=0;k<n;k++){ if(T[k]<mn){mn=T[k];ai=k;} if(T[k]>mx){mx=T[k];xi=k;} }
+          const sMin=fl(0), sMax=fl(4), eps=fl(32), refl=fl(24), ctr=fl(28);
+          const ok=v=>isFinite(v)&&v>-50&&v<500;
+          return {model:"GTC "+mm[1].replace(/^400C$/,"400 C"),W,H,T,min:mn,max:mx,minAt:ai,maxAt:xi,
+            sMin:ok(sMin)?sMin:mn, sMax:ok(sMax)&&sMax>sMin?sMax:mx, eps:isFinite(eps)&&eps>0.1&&eps<=1?eps:null, refl:ok(refl)?refl:null, center:ok(ctr)?ctr:T[(H>>1)*W+(W>>1)]};
+        }
+      }
+      i+=2+L;
+    }
+    return null;
+  }
+  function ironColor(f){ // 0..1 → 철 팔레트(검정→보라→빨강→주황→노랑→흰색)
+    const st=[[0,0,0,0],[0.15,40,0,90],[0.35,140,0,150],[0.55,220,40,40],[0.75,250,150,0],[0.9,255,230,60],[1,255,255,240]];
+    f=Math.min(1,Math.max(0,f)); let k=1; while(k<st.length-1&&st[k][0]<f) k++;
+    const a=st[k-1],c=st[k],u=(f-a[0])/(c[0]-a[0]||1); return [0,1,2].map(j=>Math.round(a[j+1]+(c[j+1]-a[j+1])*u));
+  }
+  const PARTNAME={"0":"유리 중앙부","1":"유리 모서리","2":"창틀·창짝","3":"벽·구석","ref":"기준면"};
+  function drawThermo(th,cv,scaleBar){
+    const S=4, Wd=th.W*S+(scaleBar?70:0), Hd=th.H*S;
+    cv.width=Wd; cv.height=Hd; const g=cv.getContext("2d");
+    const sm=document.createElement("canvas"); sm.width=th.W; sm.height=th.H; const sg=sm.getContext("2d"), id=sg.createImageData(th.W,th.H);
+    const lo=th.sMin, hi=th.sMax;
+    for(let k=0;k<th.T.length;k++){ const [r,gg,bb]=ironColor((th.T[k]-lo)/(hi-lo||1)); id.data[k*4]=r; id.data[k*4+1]=gg; id.data[k*4+2]=bb; id.data[k*4+3]=255; }
+    sg.putImageData(id,0,0); g.imageSmoothingEnabled=true; g.imageSmoothingQuality="high"; g.drawImage(sm,0,0,th.W*S,Hd);
+    const near=k=>(th.marks||[]).some(m=>Math.abs(m.k%th.W-k%th.W)<=4&&Math.abs(Math.floor(m.k/th.W)-Math.floor(k/th.W))<=4);
+    const mark=(k,col,label,big)=>{ const x=(k%th.W+0.5)*S, y=(Math.floor(k/th.W)+0.5)*S, r=big?18:12;
+      g.strokeStyle="#000"; g.lineWidth=6; g.beginPath(); g.moveTo(x-r,y); g.lineTo(x+r,y); g.moveTo(x,y-r); g.lineTo(x,y+r); g.stroke();
+      g.strokeStyle=col; g.lineWidth=3; g.beginPath(); g.moveTo(x-r,y); g.lineTo(x+r,y); g.moveTo(x,y-r); g.lineTo(x,y+r); g.stroke();
+      if(label){ g.font="bold 26px 'IBM Plex Sans KR',sans-serif"; const w=g.measureText(label).width+14; let lx=x+16, ly=y-42; if(lx+w>th.W*S) lx=x-16-w; if(ly<2) ly=y+16;
+        g.fillStyle="rgba(0,0,0,.75)"; g.fillRect(lx,ly,w,36); g.fillStyle=col; g.fillText(label,lx+7,ly+27); } };
+    mark(th.minAt,"#5ad1ff",near(th.minAt)?null:`최저 ${th.min.toFixed(1)}℃`); mark(th.maxAt,"#ff6b5a",near(th.maxAt)?null:`최고 ${th.max.toFixed(1)}℃`);
+    (th.marks||[]).forEach(m=>mark(m.k,"#ffffff",`${PARTNAME[m.part]} ${m.T.toFixed(1)}℃`,true));
+    if(th.sel!=null) mark(th.sel,"#ffe600",null,true);
+    if(scaleBar){ const x0=th.W*S+14; for(let y=0;y<Hd;y++){ const [r,gg,bb]=ironColor(1-y/Hd); g.fillStyle=`rgb(${r},${gg},${bb})`; g.fillRect(x0,y,16,1); }
+      g.fillStyle="#fff"; g.fillRect(th.W*S,0,70,0); g.font="12px 'IBM Plex Mono',monospace"; g.fillStyle="#17232b";
+      g.fillStyle="#fff"; g.fillRect(x0+18,0,52,Hd); g.fillStyle="#17232b"; g.fillText(hi.toFixed(1),x0+20,12); g.fillText(lo.toFixed(1),x0+20,Hd-4); g.fillText("℃",x0+20,Hd/2+4); }
+  }
+  const avgAt=(th,x,y)=>{ let s=0,n=0; for(let dy=-1;dy<=1;dy++) for(let dx=-1;dx<=1;dx++){ const xx=x+dx,yy=y+dy; if(xx>=0&&yy>=0&&xx<th.W&&yy<th.H){ s+=th.T[yy*th.W+xx]; n++; } } return s/n; };
+  function renderThermos(){
+    const box=$("gtc-views"); box.innerHTML="";
+    THERMOS.forEach((th,ti)=>{
+      const card=document.createElement("div"); card.className="gtc-card";
+      card.innerHTML=`<div class="gtc-head"><span>${esc(th.name)}</span><button type="button" aria-label="이 사진 빼기">×</button></div>
+        <div class="gtc-tabs"><button type="button" aria-pressed="true" data-v="ir">열화상</button><button type="button" aria-pressed="false" data-v="vis">일반 사진</button></div>
+        <canvas aria-label="열화상. 누르면 그 지점의 온도를 읽습니다"></canvas><img class="vis" alt="같은 위치의 일반 사진" hidden>
+        <div class="gtc-info"><span>${esc(th.model)}</span>${th.eps?`<span>방사율 ${th.eps.toFixed(2)}</span>`:""}<span>중심 ${th.center.toFixed(1)}℃</span><span>최저 ${th.min.toFixed(1)}℃</span><span>최고 ${th.max.toFixed(1)}℃</span>${th.refl!=null?`<span>반사온도 ${th.refl.toFixed(1)}℃</span>`:""}</div>
+        <div class="gtc-pick"><span>열화상에서 측정할 지점을 누르세요.</span></div>`;
+      const cv=card.querySelector("canvas"), img=card.querySelector("img"), pick=card.querySelector(".gtc-pick");
+      img.src=th.vis; drawThermo(th,cv,false);
+      card.querySelector(".gtc-head button").onclick=()=>{ THERMOS.splice(ti,1); renderThermos(); };
+      card.querySelectorAll(".gtc-tabs button").forEach(b=>b.onclick=()=>{ const ir=b.dataset.v==="ir"; cv.hidden=!ir; img.hidden=ir; card.querySelectorAll(".gtc-tabs button").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); });
+      const choose=k=>{
+        th.sel=k; const x=k%th.W, y=Math.floor(k/th.W), T=avgAt(th,x,y); drawThermo(th,cv,false);
+        pick.innerHTML=`<span>선택 지점</span><b>${T.toFixed(1)}℃</b><span>→</span>`+["1","0","2","3","ref"].map(pt=>`<button type="button" data-pt="${pt}">${PARTNAME[pt]}</button>`).join("");
+        pick.querySelectorAll("button").forEach(bt=>bt.onclick=()=>{
+          const pt=bt.dataset.pt;
+          THERMOS.forEach(o=>o.marks=(o.marks||[]).filter(m=>m.part!==pt));
+          (th.marks=th.marks||[]).push({k,part:pt,T}); th.sel=null;
+          const id=pt==="ref"?"tsm-ref":"tsm"+pt; $(id).value=T.toFixed(1);
+          $("tsm-dev").value="gtc"; calc(); renderThermos();
+        });
+      };
+      cv.addEventListener("click",e=>{ const r=cv.getBoundingClientRect(); const x=Math.min(th.W-1,Math.max(0,Math.floor((e.clientX-r.left)/r.width*th.W))), y=Math.min(th.H-1,Math.max(0,Math.floor((e.clientY-r.top)/r.height*th.H))); choose(y*th.W+x); });
+      if(th.sel!=null) choose(th.sel);
+      else if(!(th.marks||[]).length){ pick.innerHTML=`<span>열화상에서 측정할 지점을 누르세요.</span><button type="button" data-q="min">최저 지점 고르기</button>`; pick.querySelector("button").onclick=()=>choose(th.minAt); }
+      else pick.innerHTML=`<span>${th.marks.map(m=>`${PARTNAME[m.part]} ${m.T.toFixed(1)}℃`).join(" · ")} 입력됨. 다른 지점을 누르면 더 넣을 수 있습니다.</span>`;
+      box.appendChild(card);
+    });
+  }
+  $("gtc-file").addEventListener("change",async e=>{
+    const files=[...e.target.files]; e.target.value=""; const st=$("gtc-status"); st.hidden=false;
+    let nData=0,nPhoto=0;
+    for(const f of files){
+      try{
+        const buf=await f.arrayBuffer(), th=parseGTC(buf);
+        if(th){ th.name=f.name; th.vis=await shrinkImage(f); th.marks=[]; THERMOS.push(th); nData++; }
+        else { if(THERMAL.length<4){ const u=await shrinkImage(f); if(u){ THERMAL.push(u); nPhoto++; } } }
+      }catch(err){}
+    }
+    renderThermos(); renderThermal();
+    if(nData){ $("tsm-dev").value="gtc"; calc(); }
+    st.style.setProperty("--c",nData?"var(--ok)":"var(--warn)");
+    st.innerHTML=nData?`열화상 ${nData}장의 온도 정보를 읽었습니다${nPhoto?` · 온도 정보가 없는 사진 ${nPhoto}장은 결과서 사진으로 넣었습니다`:""}. 열화상에서 유리 모서리, 창틀 등을 눌러 온도를 넣으세요.`
+      :`온도 정보를 찾지 못해 ${nPhoto}장을 결과서 사진으로만 넣었습니다. 카메라가 함께 저장한 일반 사진 파일(640×480)을 불러오면 온도를 읽을 수 있습니다.`;
+  });
+
+  // ══════════ 환기 진단 (testo 405i) ══════════
+  const VENTS=[]; let VMETA=null, VENT=null;
+  const absHum=(T,RH)=>RH/100*ps(T)/(461.5*(T+273.15))*1000; // g/m³
+  function renderVents(){
+    $("v-list").innerHTML=VENTS.map((v,i)=>`<div class="vrow" data-i="${i}">
+      <div class="vname"><label>측정 위치</label><input type="text" data-k="name" value="${esc(v.name)}"></div>
+      <div><label>풍속 m/s</label><input type="number" data-k="v" step="0.01" min="0" inputmode="decimal" value="${v.v??""}"></div>
+      <div><label>면적 cm²</label><input type="number" data-k="a" step="1" min="0" inputmode="decimal" value="${v.a??""}"></div>
+      <div><label>풍량 m³/h</label><input type="number" data-k="q" step="0.1" min="0" inputmode="decimal" value="${v.q??""}" placeholder="${v.v!=null&&v.a?(v.v*v.a/1e4*3600).toFixed(1):""}"></div>
+      <button type="button" class="rm" data-rmv="${i}" aria-label="${esc(v.name)} 빼기">×</button></div>`).join("");
+  }
+  $("v-list").addEventListener("input",e=>{ const row=e.target.closest(".vrow"), k=e.target.dataset.k; if(!row||!k) return; const v=VENTS[+row.dataset.i];
+    if(k==="name") v.name=e.target.value; else { const x=parseFloat(e.target.value); v[k]=isNaN(x)?null:x; }
+    if(k!=="q"){ const q=row.querySelector('[data-k="q"]'); q.placeholder=v.v!=null&&v.a?(v.v*v.a/1e4*3600).toFixed(1):""; }
+    calc(); });
+  $("v-list").addEventListener("click",e=>{ const b=e.target.closest("[data-rmv]"); if(b){ VENTS.splice(+b.dataset.rmv,1); renderVents(); calc(); } });
+  $("v-add").addEventListener("click",()=>{ VENTS.push({name:["주방 후드","욕실 환풍기","환기장치 배기","드레스룸 배기"][VENTS.length%4],v:null,a:null,q:null}); renderVents(); calc(); });
+  $("v-file").addEventListener("change",async e=>{
+    const f=e.target.files[0]; e.target.value=""; if(!f) return;
+    const st=$("v-status"); st.hidden=false;
+    try{
+      let text;
+      if(/\.xlsx?$/i.test(f.name)){ if(!window.XLSX) await loadScript("https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"); const wb=XLSX.read(await f.arrayBuffer(),{type:"array"}); text=XLSX.utils.sheet_to_csv(wb.Sheets[wb.SheetNames[0]],{FS:";"}); }
+      else text=decodeBuf(await f.arrayBuffer());
+      const all=splitTable(text), t=buildTable(all); VMETA=parseMeta(all);
+      if(!t||!t.n) throw 0;
+      const find=re=>t.cols.find(c=>c.numeric&&re.test(c.name));
+      const cv=find(/m\s*\/\s*s|풍속|velocity|geschw/i), cq=find(/m[³3]\s*\/\s*h|풍량|volume|l\s*\/\s*s|cfm/i), ct=find(/°\s*[cf]|℃|온도|temp/i);
+      const mean=c=>{ const a=c.vals.filter(v=>!isNaN(v)); return a.length?a.reduce((x,y)=>x+y,0)/a.length:null; };
+      let v=cv?mean(cv):null, q=cq?mean(cq):null;
+      if(cv&&/fpm|ft\s*\/\s*min/i.test(cv.name)) v=v*0.00508;
+      if(cq&&/l\s*\/\s*s/i.test(cq.name)) q=q*3.6; if(cq&&/cfm/i.test(cq.name)) q=q*1.699;
+      if(v==null&&q==null) throw 0;
+      const winFront = q==null && v!=null && v<0.3;
+      if(winFront){ $("v-win").value=v.toFixed(2); }
+      else VENTS.push({name:`405i 측정 ${VENTS.length+1}`,v:v!=null?+v.toFixed(2):null,a:null,q:q!=null?+q.toFixed(1):null});
+      renderVents(); if(VMETA&&VMETA.device&&!$("eq-405").value) $("eq-405").value=(VMETA.device.match(/S\/N\s*(\S+)/)||[])[1]||"";
+      st.style.setProperty("--c","var(--ok)");
+      const vmax=cv?Math.max(...cv.vals.filter(x=>!isNaN(x))):null;
+      st.innerHTML = winFront
+        ? `${VMETA&&VMETA.device?`<b>${esc(VMETA.device)}</b> · `:""}${t.n}개 측정값 · 평균 풍속 ${f2(v)} m/s (최고 ${f2(vmax)})${ct?` · 온도 ${f1(mean(ct))}℃`:""}. 풍속이 낮고 풍량이 없어 <b>창 앞 기류</b>로 넣었습니다. <button type="button" class="mini" id="v-move">배기구 측정으로 옮기기</button>`
+        : `${VMETA&&VMETA.device?`<b>${esc(VMETA.device)}</b> · `:""}${t.n}개 측정값 평균을 추가했습니다${v!=null?` · 풍속 ${f2(v)} m/s`:""}${q!=null?` · 풍량 ${f1(q)} m³/h`:" · 풍량이 없어 개구 면적(cm²)을 넣어야 합니다"}${ct?` · 온도 ${f1(mean(ct))}℃`:""}.`;
+      const mv=$("v-move"); if(mv) mv.onclick=()=>{ VENTS.push({name:`405i 측정 ${VENTS.length+1}`,v:+v.toFixed(2),a:null,q:null}); $("v-win").value=""; renderVents(); calc(); mv.remove(); };
+      calc();
+    }catch(err){ st.style.setProperty("--c","var(--crit)"); st.textContent="풍속이나 풍량 값을 찾지 못했습니다. testo Smart 앱에서 Excel(CSV)로 내보낸 405i 파일인지 확인하세요."; }
+  });
+  function ventCalc(c){
+    const flows=VENTS.map(v=>v.q!=null?v.q:(v.v!=null&&v.a?v.v*v.a/1e4*3600:null)).filter(x=>x!=null&&x>0);
+    const vwin=num("v-win",0,5);
+    const has=flows.length||vwin!=null;
+    $("sec-vent").hidden=!has; $("nav-vent").hidden=!has; VENT=null; if(!has) return;
+    const area=num("v-area",1,2000), hgt=num("v-h",1.8,6)??2.3, orh=num("v-orh",5,100)??70;
+    const Q=flows.reduce((a,b)=>a+b,0), V=area?area*hgt:null, ach=V&&Q?Q/V:null;
+    const ci=absHum(c.Ti,c.RH), ce=absHum(c.To,orh), dC=ci-ce;
+    const G=Q&&dC>0?Q*dC:null; // 현재 상태가 유지된다고 볼 때 실내 수분 발생량 ≈ 환기로 빠지는 양
+    const rhTarget=Math.max(30,Math.min(70,Math.floor(c.rhmWorst||60)));
+    const cT=absHum(c.Ti,rhTarget), Qneed=G&&cT>ce?G/(cT-ce):null;
+    const cell=(k,v,sub,col)=>`<div class="stat"><span>${k}</span><b style="${col?`color:${col}`:""}">${v}</b><em>${sub||""}</em></div>`;
+    let g="";
+    if(flows.length){
+      g+=cell("측정 배기량 합계",f1(Q)+" m³/h",`${flows.length}곳 측정`);
+      g+=cell("환기 횟수",ach!=null?f2(ach)+" 회/h":"—",ach!=null?`실 체적 ${Math.round(V)} m³ · 기준 0.5회/h`:"바닥 면적을 넣으세요",ach!=null?(ach>=0.5?"var(--ok)":"var(--crit)"):"");
+    }
+    g+=cell("실내 절대습도",f2(ci)+" g/m³",`${f1(c.Ti)}℃ · ${Math.round(c.RH)}%`);
+    g+=cell("외기 절대습도",f2(ce)+" g/m³",`${f1(c.To)}℃ · ${Math.round(orh)}%`);
+    if(G!=null){
+      g+=cell("환기로 빠지는 수분",Math.round(G)+" g/h",`하루 약 ${f1(G*24/1000)} kg`);
+      g+=cell("곰팡이 방지 목표 습도",rhTarget+" %","가장 취약한 부위 기준");
+      g+=cell(Qneed!=null&&Qneed>Q*1.05?"필요 배기량":"최소 필요 배기량",Qneed!=null?Math.round(Qneed)+" m³/h":"—",Qneed!=null?(V?`환기 횟수 ${f2(Qneed/V)} 회/h · `:"")+(Qneed>Q*1.05?`${Math.round(Qneed-Q)} m³/h 더 필요`:"현재 배기량으로 충분"):"",Qneed!=null&&Qneed>Q*1.05?"var(--bad)":"var(--ok)");
+    }
+    if(vwin!=null){ const cls=vwin<0.05?["정체","var(--warn)","커튼 뒤·구석처럼 표면이 더 차가워질 수 있음"]:vwin<0.15?["약함","","보통 실내 수준"]:["원활","var(--ok)","표면 온도 유지에 유리"]; g+=cell("창 앞 기류",f2(vwin)+" m/s · "+cls[0],cls[2],cls[1]); }
+    $("ve-grid").innerHTML=g;
+    let L,head;
+    if(ach!=null&&ach<0.5){ L={t:"환기 부족",c:"var(--crit)"}; head=`측정한 배기량으로는 시간당 ${f2(ach)}회 환기되어 법정 기준(0.5회/h)에 못 미칩니다.`; }
+    else if(Qneed!=null&&Qneed>Q*1.05){ L={t:"환기량 부족",c:"var(--bad)"}; head=`습도를 ${rhTarget}%로 낮추려면 배기량을 ${Math.round(Qneed)} m³/h로 약 ${Math.round(Qneed-Q)} m³/h 늘려야 합니다.`; }
+    else if(flows.length){ L={t:"적정",c:"var(--ok)"}; head=ach!=null?`환기 횟수 ${f2(ach)}회/h로 기준을 충족하고 현재 습도도 목표 이하입니다.`:"현재 배기량으로 실내 습도가 목표 이하로 유지됩니다."; }
+    else { L={t:"창 앞 기류",c:"var(--muted)"}; head="배기구 풍량을 재면 환기량 진단도 함께 나옵니다."; }
+    if(ce>=ci) head+=" 지금은 바깥 공기가 실내보다 습해 환기로 습도가 내려가지 않습니다.";
+    $("ve-pill").textContent=L.t; $("ve-pill").style.setProperty("--c",L.c); $("ve-head").textContent=head;
+    const note="필요 배기량은 지금 실내 습도가 환기와 균형을 이룬 상태라고 보고 계산한 추정치입니다. 틈새로 드나드는 공기(침기)는 측정하지 않아 실제 환기량은 조금 더 많을 수 있습니다. 환기 횟수 기준 0.5회/h는 「건축물의 설비기준 등에 관한 규칙」의 신축 공동주택 기준입니다.";
+    $("ve-note").textContent=note;
+    VENT={L,head,grid:g,note,rows:VENTS.map(v=>({...v,flow:v.q!=null?v.q:(v.v!=null&&v.a?v.v*v.a/1e4*3600:null)}))};
+  }
+
+  // 현재 위치 날씨 (Open-Meteo, 무료·키 없음)
+  $("wx").addEventListener("click",()=>{
+    const b=$("wx"), old=b.textContent;
+    const done=(t,ok)=>{ b.textContent=t; b.disabled=false; setTimeout(()=>{ b.textContent=old; },ok?6000:9000); };
+    if(!navigator.geolocation) return done("이 기기에서는 위치를 쓸 수 없습니다",false);
+    b.disabled=true; b.textContent="위치 확인 중…";
+    navigator.geolocation.getCurrentPosition(async pos=>{
+      try{
+        b.textContent="날씨 불러오는 중…";
+        const {latitude:la,longitude:lo}=pos.coords;
+        const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${la.toFixed(3)}&longitude=${lo.toFixed(3)}&current=temperature_2m,relative_humidity_2m&timezone=auto`);
+        const j=await r.json(); const t=j&&j.current&&j.current.temperature_2m;
+        if(typeof t!=="number") throw 0;
+        setVal("to",t); const orh=j.current.relative_humidity_2m; if(typeof orh==="number") $("v-orh").value=Math.round(orh);
+        clearPreset(); calc();
+        done(`외부 ${f1(t)}℃${typeof orh==="number"?` · 습도 ${Math.round(orh)}%`:""} 적용 (Open-Meteo)`,true);
+      }catch(e){ done("날씨를 불러오지 못했습니다. 외부 온도를 직접 넣으세요",false); }
+    },()=>done("위치 권한이 없어 불러오지 못했습니다",false),{timeout:10000,maximumAge:600000});
+  });
 
   function tips(d){
     const out=[];
@@ -973,6 +1373,42 @@ section[id]{scroll-margin-top:64px}
     out:/(outdoor|outside|외부|외기|실외|aussen|außen|\bout\b)/i,
     temp:/(°\s*[cf]|℃|℉|temp|온도|\bt\b)/i
   };
+  const SUMROW=/^(전체\s*)?(평균|최소|최대|합계|표준편차)|^(average|mean|min|max|minimum|maximum|sum|std)|^(mittel|minimum|maximum)/i;
+  const SECTION=/^<\s*(.+?)\s*>$/;
+  // testo Smart 앱 날짜 "26. 10. 1. 8:01:41 오전" 등 → "2026-10-01 08:01:41"
+  function fmtTime(raw){
+    const t=String(raw||"").trim();
+    let m=t.match(/^(\d{2,4})\s*[.\-/]\s*(\d{1,2})\s*[.\-/]\s*(\d{1,2})\.?\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(오전|오후|AM|PM|am|pm)?/);
+    if(m){ let [,y,mo,d,h,mi,se,ap]=m; y=+y<100?2000+ +y:+y; h=+h; if(ap&&/오후|pm/i.test(ap)&&h<12) h+=12; if(ap&&/오전|am/i.test(ap)&&h===12) h=0;
+      return `${y}-${pad2(mo)}-${pad2(d)} ${pad2(h)}:${mi}${se?":"+se:""}`; }
+    m=t.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?/); // 15.01.2026 07:00
+    if(m){ const [,d,mo,y,h,mi,se]=m; return `${y}-${pad2(mo)}-${pad2(d)} ${pad2(h)}:${mi}${se?":"+se:""}`; }
+    return t;
+  }
+  // 파일 아래쪽 "< 측정기 >" 같은 구역 읽기
+  function parseMeta(rows){
+    const meta={};
+    for(let i=0;i<rows.length;i++){
+      const m=String(rows[i][0]||"").trim().match(SECTION); if(!m) continue;
+      const name=m[1], keys=(rows[i+1]||[]).map(k=>k.trim()), list=[];
+      for(let j=i+2;j<rows.length&&!SECTION.test(String(rows[j][0]||"").trim());j++){
+        if(rows[j].every(c=>!c.trim())) continue;
+        const o={}; keys.forEach((k,x)=>{ if(k&&rows[j][x]&&rows[j][x].trim()) o[k]=rows[j][x].trim(); }); if(Object.keys(o).length) list.push(o);
+      }
+      meta[name]=list;
+    }
+    const sec=re=>{ const k=Object.keys(meta).find(n=>re.test(n)); return k?meta[k]:[]; };
+    const pick=(o,re)=>{ if(!o) return ""; const k=Object.keys(o).find(n=>re.test(n)); return k?o[k]:""; };
+    const inst=sec(/측정기|instrument|probe|gerät|device/i), par=sec(/측정\s*파라미터|parameter/i)[0], cust=sec(/고객|customer|kunde/i)[0], comp=sec(/기업|company|firma/i)[0], mp=sec(/측정점|measuring\s*point|messstelle/i)[0];
+    const devs=[...new Set(inst.map(o=>[pick(o,/성명|name/i),pick(o,/일련|serial/i)].filter(Boolean).join(" · S/N ")))].filter(Boolean);
+    return {
+      device:devs.join(", "), fw:pick(inst[0],/펌웨어|firmware/i),
+      mode:pick(par,/모드|mode/i), cycle:pick(par,/주기|cycle|interval/i), start:fmtTime(pick(par,/시작|start/i)), end:fmtTime(pick(par,/종료|end/i)), dur:pick(par,/기간|duration/i),
+      custName:pick(cust,/^성명$|^name$/i)||pick(cust,/고객|customer/i), custAddr:[pick(cust,/주소|address/i),pick(cust,/구\/동|city|ort/i)].filter(Boolean).join(" "),
+      tech:pick(comp,/기술자|technician/i)||pick(comp,/^성명$|^name$/i), tel:pick(comp,/전화|phone|tel/i),
+      point:[pick(mp,/^성명$|^name$/i),pick(mp,/메모|note|comment/i)].filter(Boolean).join(" · ")
+    };
+  }
   function buildTable(rows){
     const isNumRow=r=>r.filter(c=>!isNaN(toNum(c))).length>=2;
     let h=-1;
@@ -985,7 +1421,15 @@ section[id]{scroll-margin-top:64px}
       head=rows[h].slice(); start=h+1;
       if(rows[h+1] && !isNumRow(rows[h+1]) && isNumRow(rows[h+2]||[])){ head=head.map((c,j)=>(c+" "+(rows[h+1][j]||"")).trim()); start=h+2; }
     } else { start=rows.findIndex(isNumRow); if(start<0) return null; head=[]; }
-    const body=rows.slice(start).filter(r=>r.some(c=>!isNaN(toNum(c))));
+    // 측정 행만: 요약행(전체 평균·최소·최대)은 빼고, 데이터가 끝나면(구역 표시·빈 행) 멈춤
+    const body=[], summary=[];
+    for(let i=start;i<rows.length;i++){
+      const r=rows[i], first=String(r[0]||"").trim();
+      if(SECTION.test(first)) break;
+      if(SUMROW.test(first)){ summary.push(r); continue; }
+      if(!isNumRow(r)){ if(body.length) break; else continue; }
+      body.push(r);
+    }
     const n=Math.max(head.length,...body.slice(0,50).map(r=>r.length));
     const cols=[];
     for(let j=0;j<n;j++){
@@ -996,13 +1440,16 @@ section[id]{scroll-margin-top:64px}
       const mean=fin.reduce((a,b)=>a+b,0)/Math.max(1,fin.length);
       cols.push({j,name,raw:body.map(r=>r[j]??""),vals,numeric:numFrac>0.6,mean,F:/°\s*f|℉/i.test(name)});
     }
-    return {cols,n:body.length};
+    return {cols,n:body.length,summary};
   }
   function guess(cols){
-    const g={ti:-1,rh:-1,ts:-1,to:-1,time:-1,time2:-1}, used=new Set();
+    const g={ti:-1,rh:-1,ts:-1,to:-1,time:-1,time2:-1,dew:-1,ah:-1}, used=new Set();
     const pick=(k,test)=>{ const c=cols.find(c=>!used.has(c.j)&&test(c)); if(c){ g[k]=c.j; used.add(c.j); } };
     pick("time",c=>RX.time.test(c.name)||(!c.numeric&&c.raw.some(v=>/\d[:.\-/]\d/.test(v))));
-    cols.filter(c=>RX.dew.test(c.name)||RX.wet.test(c.name)).forEach(c=>used.add(c.j));
+    const AUX=/(절대|absolute|g\s*\/\s*m|g\s*\/\s*kg|엔탈피|enthalpy|혼합비|mixing)/i;
+    const dewc=cols.find(c=>c.numeric&&RX.dew.test(c.name)); if(dewc) g.dew=dewc.j;
+    const ahc=cols.find(c=>c.numeric&&AUX.test(c.name)); if(ahc) g.ah=ahc.j;
+    cols.filter(c=>RX.dew.test(c.name)||RX.wet.test(c.name)||AUX.test(c.name)).forEach(c=>used.add(c.j));
     pick("rh",c=>c.numeric&&RX.rh.test(c.name));
     pick("ts",c=>c.numeric&&RX.surf.test(c.name)&&RX.temp.test(c.name));
     pick("to",c=>c.numeric&&RX.out.test(c.name)&&!RX.rh.test(c.name));
@@ -1022,15 +1469,22 @@ section[id]{scroll-margin-top:64px}
   ["m-ti","m-rh","m-ts","m-to","m-time"].forEach(id=>$(id).addEventListener("input",()=>{ if(DATA){ ["ti","rh","ts","to","time"].forEach(k=>DATA.map[k]=+$("m-"+k).value); analyze(); } }));
 
   function loadText(text,label){
-    const t=buildTable(splitTable(text));
+    const allRows=splitTable(text);
+    const t=buildTable(allRows);
     if(!t||!t.n){ status("숫자 측정값을 찾지 못했습니다. testo Smart 앱에서 <b>Excel(CSV)</b>로 내보낸 파일인지 확인하세요.","err"); return; }
     const g=guess(t.cols);
-    DATA={cols:t.cols,n:t.n,map:g,label};
+    const meta=parseMeta(allRows);
+    DATA={cols:t.cols,n:t.n,map:g,label,meta};
+    // 결과서 칸 자동 채우기 (비어 있을 때만)
+    const fillIf=(id,v)=>{ if(v&&!$(id).value.trim()) $(id).value=v; };
+    if(meta.device) fillIf("eq-605",(meta.device.match(/S\/N\s*(\S+)/)||[])[1]||"");
+    fillIf("r-cust",meta.custName); fillIf("r-addr",meta.custAddr); fillIf("r-by",meta.tech); fillIf("r-tel",meta.tel); fillIf("r-loc",meta.point);
     fillSelects(t.cols,g); $("imp-map").hidden=false;
     const nm=k=>g[k]>=0?esc(t.cols.find(c=>c.j===g[k]).name):null;
     if(g.ti<0||g.rh<0) status(`${t.n}개 행을 읽었지만 온도·습도 열을 확실히 찾지 못했습니다. 아래에서 직접 골라 주세요.`,"warn");
-    else status(`${t.n}개 측정값을 불러왔습니다. 실내 온도 <b>${nm("ti")}</b>, 습도 <b>${nm("rh")}</b>${g.ts>=0?`, 표면온도 <b>${nm("ts")}</b>`:""}${g.to>=0?`, 외부 온도 <b>${nm("to")}</b>`:""}.`,"ok");
+    else status(`${meta.device?`<b>${esc(meta.device)}</b> · `:""}${t.n}개 측정값을 불러왔습니다${t.summary.length?` (앱 요약행 ${t.summary.length}줄 제외)`:""}. 실내 온도 <b>${nm("ti")}</b>, 습도 <b>${nm("rh")}</b>${g.ts>=0?`, 표면온도 <b>${nm("ts")}</b>`:""}${g.to>=0?`, 외부 온도 <b>${nm("to")}</b>`:""}. 평균값으로 진단했습니다.`,"ok");
     analyze();
+    if(ROWS.length&&g.ti>=0&&g.rh>=0) applyAvg(false);
     if(g.ti>=0&&g.rh>=0) setTimeout(()=>$("sec-data").scrollIntoView({behavior:"smooth",block:"start"}),60);
   }
   async function loadFile(f){
@@ -1050,7 +1504,7 @@ section[id]{scroll-margin-top:64px}
   ["dragleave","drop"].forEach(ev=>drop.addEventListener(ev,e=>{ e.preventDefault(); drop.classList.remove("over"); }));
   drop.addEventListener("drop",e=>loadFile(e.dataTransfer.files[0]));
   $("paste-go").addEventListener("click",()=>{ const t=$("paste").value; if(t.trim()) loadText(t,"붙여넣은 표"); else status("붙여넣은 내용이 없습니다.","err"); });
-  $("imp-clear").addEventListener("click",()=>{ DATA=null; $("imp-map").hidden=true; $("imp-status").hidden=true; $("sec-data").hidden=true; $("nav-data").hidden=true; });
+  $("imp-clear").addEventListener("click",()=>{ DATA=null; SRC=null; $("src-note").hidden=true; $("imp-map").hidden=true; $("imp-status").hidden=true; $("sec-data").hidden=true; $("nav-data").hidden=true; });
   $("sample").addEventListener("click",()=>{
     // 예시: 겨울철 하루(30분 간격). 형식은 설명용으로 만든 가상 예시입니다.
     const L=["날짜/시간;605i 온도 [°C];605i 습도 [%RH];605i 이슬점 [°Ctd];805i 표면온도 [°C]"];
@@ -1097,24 +1551,34 @@ section[id]{scroll-margin-top:64px}
       const Tsm=cts?conv(cts,cts.vals[i]):NaN;
       const r=evalRow(To,Ti,RH,st);
       const t2=m.time2>=0&&m.time>=0?col(m.time2):null;
-      const row={i,t:ctm?(ctm.raw[i]+(t2?" "+t2.raw[i]:"")).trim():String(ROWS.length+1),Ti,RH,To,...r,Tsm:isNaN(Tsm)?null:Tsm};
+      const cdw=m.dew>=0?col(m.dew):null, cah=m.ah>=0?col(m.ah):null;
+      const row={i,t:ctm?fmtTime((ctm.raw[i]+(t2?" "+t2.raw[i]:"")).trim()):String(ROWS.length+1),TdDev:cdw?conv(cdw,cdw.vals[i]):null,AH:cah?cah.vals[i]:null,Ti,RH,To,...r,Tsm:isNaN(Tsm)?null:Tsm};
       if(row.Tsm!=null){ row.rhs=Math.min(100,r.p/ps(row.Tsm)*100); row.mCond=row.Tsm<=r.Td; row.mMold=row.rhs>=st.moldRH*100; row.mTdr=(Ti-To)>5?(Ti-row.Tsm)/(Ti-To):null; }
       ROWS.push(row);
     }
     if(!ROWS.length){ $("sec-data").hidden=true; status("선택한 열에서 올바른 온도·습도 값을 찾지 못했습니다.","err"); return; }
     $("sec-data").hidden=false; $("nav-data").hidden=false;
     $("d-src").textContent="· "+DATA.label+(cto?"":` · 외부 온도 ${f1(To0)}℃ 적용`);
+    const M=DATA.meta||{};
+    $("d-meta").textContent=[M.device&&`측정기 ${M.device}`, M.mode&&`측정 모드 ${M.mode}`, M.cycle&&`주기 ${M.cycle}`, M.dur&&`기간 ${M.dur}`].filter(Boolean).join(" · ");
+    $("d-meta").hidden=!$("d-meta").textContent;
     const n=ROWS.length, avg=k=>ROWS.reduce((a,r)=>a+r[k],0)/n, mx=k=>Math.max(...ROWS.map(r=>r[k]));
     const pct=f=>Math.round(ROWS.filter(f).length/n*100);
     const cRisk=pct(r=>r.Pc>=50), mRisk=pct(r=>r.Pm>=50);
     const stat=(label,val,sub,c)=>`<div class="stat"><span>${label}</span><b style="${c?`color:${c}`:""}">${val}</b><em>${sub||""}</em></div>`;
     let h="";
-    h+=stat("측정값",n+"개",ctm?`${esc(ROWS[0].t)} ~ ${esc(ROWS[n-1].t)}`:"");
+    const tShort=t=>String(t).replace(/^\d{4}-/,"");
+    h+=stat("측정값",n+"개",ctm?`${esc(tShort(ROWS[0].t))} ~ ${esc(tShort(ROWS[n-1].t).replace(/^\d{2}-\d{2}\s/,""))}`:"");
     h+=stat("실내 온도 평균",f1(avg("Ti"))+" ℃",`최저 ${f1(Math.min(...ROWS.map(r=>r.Ti)))} · 최고 ${f1(mx("Ti"))}`);
-    h+=stat("실내 습도 평균",Math.round(avg("RH"))+" %",`최고 ${Math.round(mx("RH"))}% · 이슬점 평균 ${f1(avg("Td"))}℃`);
+    h+=stat("실내 습도 평균",f1(avg("RH"))+" %",`최저 ${f1(Math.min(...ROWS.map(r=>r.RH)))} · 최고 ${f1(mx("RH"))}`);
+    const devDew=ROWS.filter(r=>r.TdDev!=null&&!isNaN(r.TdDev));
+    h+=stat("이슬점 평균",f1(avg("Td"))+" ℃",devDew.length?`측정기 표시 ${f1(devDew.reduce((a,r)=>a+r.TdDev,0)/devDew.length)}℃`:`최고 ${f1(mx("Td"))}℃`);
+    const ahs=ROWS.filter(r=>r.AH!=null&&!isNaN(r.AH));
+    if(ahs.length) h+=stat("절대습도 평균",f2(ahs.reduce((a,r)=>a+r.AH,0)/ahs.length)+" g/m³","측정기 값");
     h+=stat("최고 결로 가능성",Math.round(mx("Pc"))+"%","창호 계산 기준",level(mx("Pc")).c);
-    h+=stat("결로 위험 시간",cRisk+"%","가능성 50% 이상인 측정 비율",level(cRisk).c);
-    h+=stat("곰팡이 위험 시간",mRisk+"%","가능성 50% 이상인 측정 비율",level(mRisk).c);
+    if(n>=20){ h+=stat("결로 위험 시간",cRisk+"%","가능성 50% 이상인 측정 비율",level(cRisk).c);
+      h+=stat("곰팡이 위험 시간",mRisk+"%","가능성 50% 이상인 측정 비율",level(mRisk).c); }
+    else h+=stat("최고 곰팡이 가능성",Math.round(mx("Pm"))+"%","창호 계산 기준",level(mx("Pm")).c);
     const withS=ROWS.filter(r=>r.Tsm!=null);
     if(withS.length){
       const mc=withS.filter(r=>r.mCond).length, tdrs=withS.map(r=>r.mTdr).filter(v=>v!=null&&v>0&&v<1);
@@ -1136,7 +1600,7 @@ section[id]{scroll-margin-top:64px}
     // 표
     $("d-head").innerHTML=`<tr><th>시각</th><th>실내℃</th><th>습도%</th><th>이슬점</th>${withS.length?"<th>표면℃</th>":""}${cto?"<th>외부℃</th>":""}<th>결로</th><th>곰팡이</th></tr>`;
     const lim=Math.min(n,1000);
-    $("d-body").innerHTML=ROWS.slice(0,lim).map((r,k)=>`<tr data-k="${k}"><td>${esc(String(r.t).replace(/^\d{4}[-./]\s?/,""))}</td><td class="m">${f1(r.Ti)}</td><td class="m">${Math.round(r.RH)}</td><td class="m">${f1(r.Td)}</td>${withS.length?`<td class="m" style="color:${r.mCond?"var(--crit)":"inherit"}">${r.Tsm!=null?f1(r.Tsm):"—"}</td>`:""}${cto?`<td class="m">${f1(r.To)}</td>`:""}<td class="m" style="color:${level(r.Pc).c};font-weight:600">${Math.round(r.Pc)}%</td><td class="m" style="color:${level(r.Pm).c};font-weight:600">${Math.round(r.Pm)}%</td></tr>`).join("");
+    $("d-body").innerHTML=ROWS.slice(0,lim).map((r,k)=>`<tr data-k="${k}"><td>${esc(String(r.t).replace(/^\d{4}-\d{2}-\d{2}\s/,"").replace(/^\d{4}[-./]\s?/,""))}</td><td class="m">${f1(r.Ti)}</td><td class="m">${Math.round(r.RH)}</td><td class="m">${f1(r.Td)}</td>${withS.length?`<td class="m" style="color:${r.mCond?"var(--crit)":"inherit"}">${r.Tsm!=null?f1(r.Tsm):"—"}</td>`:""}${cto?`<td class="m">${f1(r.To)}</td>`:""}<td class="m" style="color:${level(r.Pc).c};font-weight:600">${Math.round(r.Pc)}%</td><td class="m" style="color:${level(r.Pm).c};font-weight:600">${Math.round(r.Pm)}%</td></tr>`).join("");
     $("d-note").textContent=(n>lim?`처음 ${lim}개만 표시합니다. `:"")+"결로·곰팡이 가능성은 측정한 실내 공기 조건에 현재 선택한 창호 종류와 창 앞 조건을 적용한 값입니다."+(withS.length?" 표면온도 칸이 빨간색이면 실측 표면온도가 이슬점 이하입니다.":"");
   }
   function lineChart(id,series,unit,Hd,fixed){
@@ -1154,7 +1618,7 @@ section[id]{scroll-margin-top:64px}
     for(let v=Math.ceil(lo/ystep)*ystep;v<=hi;v+=ystep) s+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${L-5}" y="${Y(v)+4}" font-size="10.5" text-anchor="end" fill="var(--muted)" font-family="IBM Plex Mono, monospace">${v}</text>`;
     s+=`<text x="${L}" y="11" font-size="10" text-anchor="start" fill="var(--muted)">단위 ${unit}</text>`;
     const ticks=narrow?3:5;
-    for(let k=0;k<ticks;k++){ const i=Math.round(k/(ticks-1)*(pts.length-1)); const lab=String(pts[i]?.t??"").replace(/^\d{4}[-./]/,"").slice(-11);
+    for(let k=0;k<ticks;k++){ const i=Math.round(k/(ticks-1)*(pts.length-1)); const lab=String(pts[i]?.t??"").replace(/^\d{4}-\d{2}-\d{2}\s/,"").replace(/^\d{4}[-./]/,"").slice(-11);
       s+=`<text x="${X(i)}" y="${H-8}" font-size="10" text-anchor="${k===0?"start":k===ticks-1?"end":"middle"}" fill="var(--muted)" font-family="IBM Plex Mono, monospace">${esc(lab)}</text>`; }
     series.forEach(sr=>{
       let d="", pen=false;
@@ -1165,21 +1629,42 @@ section[id]{scroll-margin-top:64px}
     if(id==="d-temp") pts.forEach((r,i)=>{ if(r.mCond) s+=`<circle cx="${X(i)}" cy="${Y(clamp(r.Tsm,lo,hi))}" r="3.5" fill="var(--crit)"/>`; });
     svg.setAttribute("viewBox",`0 0 ${W} ${H}`); svg.innerHTML=s;
   }
-  function applyRow(r){
+  function applyRow(r,label,scroll=true){
     if(!r) return;
     const a=setVal("ti",r.Ti), b=setVal("rh",r.RH); if(DATA.map.to>=0) setVal("to",r.To);
+    setSource(label||`측정값 ${r.t?fmtTime(r.t).replace(/^\d{4}-/,""):""}`);
     clearPreset(); calc();
+    if(!scroll) return;
     document.querySelectorAll("#d-body tr").forEach(tr=>tr.classList.toggle("sel",ROWS[+tr.dataset.k]===r));
     $("sec-result").scrollIntoView({behavior:"smooth",block:"start"});
   }
   $("d-body").addEventListener("click",e=>{ const tr=e.target.closest("tr"); if(tr) applyRow(ROWS[+tr.dataset.k]); });
   document.querySelectorAll("[data-pick]").forEach(b=>b.addEventListener("click",()=>{
     if(!ROWS.length) return; const k=b.dataset.pick;
-    if(k==="last") return applyRow(ROWS[ROWS.length-1]);
-    if(k==="worst") return applyRow(ROWS.reduce((a,r)=>(r.Pc+r.Pm*0.5)>(a.Pc+a.Pm*0.5)?r:a));
-    const n=ROWS.length, m={Ti:ROWS.reduce((a,r)=>a+r.Ti,0)/n, RH:ROWS.reduce((a,r)=>a+r.RH,0)/n, To:ROWS.reduce((a,r)=>a+r.To,0)/n};
-    applyRow(m);
+    if(k==="last"){ const r=ROWS[ROWS.length-1]; return applyRow(r,`마지막 측정값 (${String(r.t).replace(/^\d{4}-/,"")})`); }
+    if(k==="worst"){ const r=ROWS.reduce((a,r)=>(r.Pc+r.Pm*0.5+r.RH*0.01)>(a.Pc+a.Pm*0.5+a.RH*0.01)?r:a); return applyRow(r,`가장 위험한 순간 (${String(r.t).replace(/^\d{4}-/,"")})`); }
+    applyAvg(true);
   }));
+  function applyAvg(scroll){
+    const n=ROWS.length; if(!n) return;
+    const m={Ti:ROWS.reduce((a,r)=>a+r.Ti,0)/n, RH:ROWS.reduce((a,r)=>a+r.RH,0)/n, To:ROWS.reduce((a,r)=>a+r.To,0)/n};
+    applyRow(m,`${n}개 측정값 평균`,scroll);
+  }
+  // 입력 출처 표시: 측정값 적용 ↔ 수동 입력
+  let SRC=null;
+  function setSource(label){
+    SRC=label; const el=$("src-note"); el.hidden=false; el.style.setProperty("--c","var(--glass)");
+    const dev=(DATA&&DATA.meta&&DATA.meta.device)||"측정 데이터";
+    el.innerHTML=`<span>실내 온도 · 습도: <b>${esc(dev)}</b> ${esc(label)} 적용${DATA&&DATA.map.to>=0?"":" · 외부 온도는 직접 입력"}</span><button type="button" id="src-manual">수동 입력으로</button>`;
+  }
+  function markManual(){
+    if(!SRC) return; SRC=null; const el=$("src-note");
+    el.style.setProperty("--c","var(--muted)"); el.innerHTML=`<span>수동 입력 중${DATA?" · 불러온 측정 데이터는 아래에 그대로 있습니다":""}</span>${DATA?'<button type="button" id="src-data">측정 평균값 다시 적용</button>':""}`;
+  }
+  $("src-note").addEventListener("click",e=>{ if(e.target.id==="src-manual") markManual(); if(e.target.id==="src-data") applyAvg(false); });
+  ["ti","rh"].forEach(id=>{ ["input"].forEach(ev=>{ $(id).addEventListener(ev,markManual); $(id+"-r").addEventListener(ev,markManual); }); });
+  document.querySelectorAll('.stepper button[data-for="ti"],.stepper button[data-for="rh"]').forEach(b=>b.addEventListener("pointerdown",markManual));
+  $("map").addEventListener("pointerdown",markManual);
   if(window.ResizeObserver){ let pw=0; new ResizeObserver(en=>{ const w=Math.round(en[0].contentRect.width); if(w&&w!==pw){ pw=w; if(DATA) analyze(); } }).observe($("d-temp")); }
 
   // ══════════ 진단결과서 ══════════
@@ -1189,7 +1674,8 @@ section[id]{scroll-margin-top:64px}
   const PHOTOS=[];
   const RKEY="gk-report-v1";
   try{ const sv=JSON.parse(localStorage.getItem(RKEY)||"{}"); if(sv.by) $("r-by").value=sv.by; if(sv.tel) $("r-tel").value=sv.tel; }catch(e){}
-  ["r-by","r-tel"].forEach(id=>$(id).addEventListener("change",()=>{ try{ localStorage.setItem(RKEY,JSON.stringify({by:$("r-by").value,tel:$("r-tel").value})); }catch(e){} }));
+  try{ const sv=JSON.parse(localStorage.getItem(RKEY)||"{}"); ["eq-605","eq-405","eq-gtc","eq-cal"].forEach(id=>{ if(sv[id]) $(id).value=sv[id]; }); }catch(e){}
+  ["r-by","r-tel","eq-605","eq-405","eq-gtc","eq-cal"].forEach(id=>$(id).addEventListener("change",()=>{ try{ const o={by:$("r-by").value,tel:$("r-tel").value}; ["eq-605","eq-405","eq-gtc","eq-cal"].forEach(k=>o[k]=$(k).value); localStorage.setItem(RKEY,JSON.stringify(o)); }catch(e){} }));
   function renderThumbs(){ $("r-thumbs").innerHTML=PHOTOS.map((u,i)=>`<figure><img src="${u}" alt="현장 사진 ${i+1}"><button type="button" data-rm="${i}" aria-label="사진 ${i+1} 빼기">×</button></figure>`).join(""); }
   $("r-thumbs").addEventListener("click",e=>{ const b=e.target.closest("[data-rm]"); if(b){ PHOTOS.splice(+b.dataset.rm,1); renderThumbs(); } });
   $("r-photo").addEventListener("change",async e=>{
@@ -1225,11 +1711,23 @@ section[id]{scroll-margin-top:64px}
     if(by||tel) info.push(["진단자",esc(by||"—"),"연락처",esc(tel||"—")]);
     if(info.length){ h+=`<div class="rsec"><h2>고객 · 현장 정보</h2>${kv(info).replace(/<th><\/th><td><\/td>/g,"").replace(/<th>현장 주소<\/th><td>/,'<th>현장 주소</th><td colspan="3">')}</div>`; }
     const selTxt=id=>$(id).selectedOptions[0]?.textContent.trim()||"";
+    const M=(DATA&&DATA.meta)||{};
     h+=`<div class="rsec"><h2>측정 조건</h2>${kv([
       ["외부 온도",`<span class="m">${f1(+$("to").value)} ℃</span>`,"내부 온도",`<span class="m">${f1(+$("ti").value)} ℃</span>`],
       ["내부 상대습도",`<span class="m">${Math.round(+$("rh").value)} %</span>`,"실내 이슬점",`<span class="m">${esc(txt("s-td"))}</span>`],
-      ["창호 종류",esc(selTxt("win")),"창 앞 실내 조건",esc(selTxt("rsi"))]
+      ["창호 종류",esc(selTxt("win")),"창 앞 실내 조건",esc(selTxt("rsi"))],
+      ["실내 조건 입력",esc(SRC?`측정값 · ${SRC}`:"수동 입력"),"측정기",esc(M.device||(SRC?"측정 데이터":"—"))]
     ])}</div>`;
+    if(MEAS&&MEAS.rows.length){
+      h+=`<div class="rsec"><h2>실측 표면온도 판정 · ${MEAS.dev==="gtc"?"Bosch GTC 400 C 열화상":MEAS.dev==="ir"?"적외선 온도계":"접촉식 온도계"}${MEAS.ref!=null?` (기준면 보정 ${MEAS.offset>=0?"−":"+"}${f1(Math.abs(MEAS.offset))}℃)`:""}</h2>
+        <div class="verdict-box" style="--c:${MEAS.L.c}"><b>[${MEAS.L.t}] ${esc(MEAS.head)}</b></div>
+        <table class="parts" style="margin-top:8px"><thead><tr><th>부위</th><th>측정</th><th>보정 후</th><th>이슬점 여유</th><th>표면습도</th><th>판정</th><th>실측 TDR</th><th>설계기준</th><th>겨울 설계조건</th></tr></thead><tbody>${MEAS.html}</tbody></table>
+        <p style="margin:6px 0 0;color:${LIGHT.muted};font-size:10.5px">${esc(MEAS.notes)}</p></div>`;
+      THERMOS.forEach(th=>{ const cv=document.createElement("canvas"); const sel=th.sel; th.sel=null; drawThermo(th,cv,true); th.sel=sel;
+        h+=`<div class="rsec"><h2>열화상 · ${esc(th.model)}${th.eps?` · 방사율 ${th.eps.toFixed(2)}`:""}</h2><div class="rphotos"><img src="${cv.toDataURL("image/jpeg",0.9)}" alt="" style="object-fit:contain;background:#fff;height:auto"><img src="${th.vis}" alt="" style="object-fit:cover;height:auto"></div>
+          <p style="margin:4px 0 0;color:${LIGHT.muted};font-size:10.5px">최저 ${th.min.toFixed(1)}℃ · 최고 ${th.max.toFixed(1)}℃ · 중심 ${th.center.toFixed(1)}℃${(th.marks||[]).length?" · 측정 지점: "+th.marks.map(m=>`${PARTNAME[m.part]} ${m.T.toFixed(1)}℃`).join(", "):""}</p></div>`; });
+      if(THERMAL.length) h+=`<div class="rsec"><h2>열화상 사진</h2><div class="rphotos">${THERMAL.map(u=>`<img src="${u}" alt="" style="object-fit:contain;background:#000">`).join("")}</div></div>`;
+    }
     h+=`<div class="rsec"><h2>종합 판정</h2><div class="verdict-box" style="--c:${WL.c}"><b>${esc(txt("headline"))}</b><p>${esc(txt("detail"))}</p></div>
       <div class="rtiles">${tile("t-cond","표면 결로")}${tile("t-mold","곰팡이")}${tile("t-frost","결빙 · 성에")}</div></div>`;
     const head=$("rows").closest("table").querySelector("thead").innerHTML;
@@ -1245,9 +1743,21 @@ section[id]{scroll-margin-top:64px}
       h+=`<div class="rsec rfig"><h2>시간별 온도 · 이슬점</h2>${svgFor("d-temp")}<div class="rlg">${resolveVars($("d-temp-lg").innerHTML)}</div></div>`;
       h+=`<div class="rsec rfig"><h2>시간별 실내 습도 · 한계 습도</h2>${svgFor("d-rh")}<div class="rlg"><span><i style="background:${LIGHT.glass}"></i>실내 습도</span><span><i style="background:${LIGHT.crit}"></i>결로 한계 습도</span><span><i style="background:${LIGHT.mold}"></i>곰팡이 한계 습도</span></div></div>`;
     }
+    if(VENT){
+      const vr=VENT.rows.filter(v=>v.flow!=null||v.v!=null);
+      h+=`<div class="rsec"><h2>환기 진단 · testo 405i</h2><div class="verdict-box" style="--c:${VENT.L.c}"><b>[${VENT.L.t}] ${esc(VENT.head)}</b></div>
+        ${vr.length?`<table class="parts" style="margin-top:8px"><thead><tr><th>측정 위치</th><th>풍속</th><th>면적</th><th>풍량</th></tr></thead><tbody>${vr.map(v=>`<tr><td>${esc(v.name)}</td><td class="m">${v.v!=null?f2(v.v)+" m/s":"—"}</td><td class="m">${v.a?Math.round(v.a)+" cm²":"—"}</td><td class="m">${v.flow!=null?f1(v.flow)+" m³/h":"—"}</td></tr>`).join("")}</tbody></table>`:""}
+        <div class="rgrid g4" style="margin-top:8px">${[...new DOMParser().parseFromString(`<div>${VENT.grid}</div>`,"text/html").querySelectorAll(".stat")].map(st=>`<div><span>${esc(st.querySelector("span").textContent)}</span><b style="${st.querySelector("b").getAttribute("style")||""}">${esc(st.querySelector("b").textContent)}</b><span>${esc(st.querySelector("em").textContent)}</span></div>`).join("")}</div>
+        <p style="margin:6px 0 0;color:${LIGHT.muted};font-size:10.5px">${esc(VENT.note)}</p></div>`;
+    }
     h+=`<div class="rsec"><h2>권장 조치</h2><ul>${$("tips").innerHTML}</ul></div>`;
     if(note) h+=`<div class="rsec"><h2>진단 의견</h2><div class="rnote">${esc(note)}</div></div>`;
     if(PHOTOS.length) h+=`<div class="rsec"><h2>현장 사진</h2><div class="rphotos">${PHOTOS.map(u=>`<img src="${u}" alt="">`).join("")}</div></div>`;
+    const used=[]; const sn=id=>$(id).value.trim();
+    if(SRC||DATA) used.push(["605",sn("eq-605")]);
+    if(VENT) used.push(["405",sn("eq-405")]);
+    if(MEAS&&MEAS.rows.length&&MEAS.dev==="gtc") used.push(["gtc",sn("eq-gtc")]);
+    if(used.length) h+=`<div class="rsec"><h2>측정 장비</h2><table><thead><tr><th>장비</th><th>용도</th><th>측정 범위 · 정확도</th><th>일련번호</th></tr></thead><tbody>${used.map(([k,n])=>`<tr><td><b>${EQUIP[k].name}</b><br><span style="color:${LIGHT.muted}">${EQUIP[k].maker}</span></td><td>${EQUIP[k].use}</td><td>${EQUIP[k].spec}</td><td class="m" style="white-space:nowrap">${esc(n||"—")}</td></tr>`).join("")}</tbody></table>${sn("eq-cal")?`<p style="margin:4px 0 0;color:${LIGHT.muted};font-size:10.5px">최근 교정일 ${esc(sn("eq-cal"))}</p>`:""}</div>`;
     h+=`<div class="rfoot"><div><p><b style="color:${LIGHT.fg}">계산 근거</b> DIN 4108-3 · EN ISO 13788 포화수증기압·이슬점, fRsi = 1 − Rsi·U, 곰팡이 판정 표면습도 ${Math.round((num("moldrh",70,95)??80))}%, 「공동주택 결로 방지를 위한 설계기준」 온도차이비율 참고.</p>
       <p>본 결과서는 입력한 조건의 정상 상태 계산에 따른 추정치입니다. 실제 결로는 환기, 일시적 수증기 발생, 시공 상태에 따라 달라질 수 있습니다.</p>
       <p style="color:${LIGHT.fg};font-weight:600;margin-top:6px">게알란코리아${tel?` · ${esc(tel)}`:""}</p></div>
